@@ -5,7 +5,14 @@
 	<!-- (U)ser Elemente -->
 	<xs:element name="Uname" type="xs:string" />
 	<xs:element name="Ualter" type="xs:integer" />
-	<xs:element name="Ugeschlecht" type="xs:string" />
+	<xs:element name="Ugeschlecht">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="m" />
+				<xs:enumeration value="w" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
 	<xs:element name="Ukanal" type="xs:integer" />
 
 	<!-- (K)anal Elemente -->
@@ -14,6 +21,9 @@
 	<xs:element name="Kbild" type="xs:anyURI" />
 	<xs:element name="Kbetreiber" type="xs:integer" />
 	<xs:element name="Kkommentare" type="Kommentare" />
+
+	<!-- Abonnements Elemente -->
+	<xs:element name="Auid" type="xs:integer" />
 
 	<!-- Kommentare Elemente -->
 	<xs:element name="Kommentar">
@@ -26,9 +36,9 @@
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
-	
-	<!-- (B)eitrag Elemente-->
-	<xs:element name="Bkommentare" type="Kommentare" />
+
+	<!-- (B)eitrag Elemente -->
+	<xs:element name="Bkommentare" type="Kommentare"/>
 	<xs:element name="Btitel" type="xs:string" />
 	<xs:element name="Bbild" type="xs:anyURI" />
 
@@ -41,7 +51,9 @@
 
 	<!-- (K)anal Attribute -->
 	<xs:attribute name="Kid" type="xs:integer" />
-
+	
+	<!-- Beitrag Attribute -->
+	<xs:attribute name="Bnr" type="xs:integer" />
 
 	<!-- User (Benutzer) -->
 	<xs:element name="User">
@@ -61,7 +73,7 @@
 	<xs:element name="Abonemments">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="User" />
+				<xs:element ref="Auid" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -85,10 +97,10 @@
 	<!-- Kommentare -->
 	<xs:complexType name="Kommentare">
 		<xs:sequence>
-			<xs:element ref="Kommentar" />
+			<xs:element ref="Kommentar" minOccurs="1" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	
+
 	<!-- Beitraege -->
 	<xs:element name="Beitraege">
 		<xs:complexType>
@@ -97,15 +109,16 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-	
+
 	<!-- Beitrag -->
 	<xs:element name="Beitrag">
 		<xs:complexType mixed="true">
 			<xs:sequence>
 				<xs:element ref="Btitel" maxOccurs="unbounded" />
-				<xs:element ref="Bkommentare" />
-				<xs:element ref="Bbild" maxOccurs="unbounded" />
+				<xs:element ref="Bkommentare" maxOccurs="1" />
+				<xs:element ref="Bbild" minOccurs="0" maxOccurs="unbounded" />
 			</xs:sequence>
+			<xs:attribute ref="Bnr" use="required" />
 		</xs:complexType>
 	</xs:element>
 
@@ -113,8 +126,8 @@
 	<xs:element name="Dienst">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="User" />
-				<xs:element ref="Kanal" />
+				<xs:element ref="User" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="Kanal" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
