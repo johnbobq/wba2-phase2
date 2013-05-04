@@ -110,7 +110,7 @@
 		</xs:complexType>
 	</xs:element>
 
-	<!-- Beitrag -->
+	<!-- Beitrag f-->
 	<xs:element name="Beitrag">
 		<xs:complexType mixed="true">
 			<xs:sequence>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dienst xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Schema.xsd">
+  
+  <!-- Nigel hat die User ID 0, außerdem ist er Betreiber vom Kanal mit der ID 0.
+  	   Nigel hat keine Abonnements sondern betreib nur einen Kanal-->
+  <User Uid="0">
+    <Uname>Nigel</Uname>
+    <Ualter>23</Ualter>
+    <Ugeschlecht>m</Ugeschlecht>
+    <Ukanal>0</Ukanal>
+  </User>
+  
+  <!-- Bernd hat die User ID 1. Er betreibt keinen eigenen Kanal, sondern hat den Kanal von Nigel abonniert, 
+  	   die User ID von Nigel ist 0 (Auid = 0) -->
+  <User Uid="1">
+  	<Uname>Bernd</Uname>
+  	<Ualter>60</Ualter>
+  	<Ugeschlecht>m</Ugeschlecht>
+  	<Abonemments>
+  		<Auid>0</Auid>
+  	</Abonemments>
+  </User>
+  
+  <!-- Der erste Kanal mit der ID 0 (Kid=0) wird betrieben von Nigel (Kbetreiber =0)
+  		Testkanal hat eine Kanalbeschreibung und ein Kanalbild
+  		Außerdem hat Nigel (Kuser=0) den ersten Kanalkommentar (Knr=0) verfasst
+  		Es git bereits zwei Beiträge: s.u. -->
+  <Kanal Kid="0">
+    <Kname>Testkanal</Kname>
+    <Kbeschreibung> Dient nur zu Testzwecken</Kbeschreibung>
+    <Kbild>http://www.schwarzesbild.de</Kbild>
+    <Kkommentare>
+      <Kommentar Knr="0" Kuser="0">Das ist ein Kanal Kommentar von Nigel mit User ID 0</Kommentar>
+    </Kkommentare>
+    <Kbetreiber>0</Kbetreiber>
+    
+    <!-- Beitraege umfasst zwei Beitraege
+    	Der erste Beitrag (Bnr=0) handelt ueber das schoene Wetter
+    	Der Beitragskommentar (Knr=0) ist von Nigel (Kuser=0)
+    	er zweite Beitrag (Bnr=1) enthält einen Kommentar von Nigel und einen von Bernd -->
+    <Beitraege>
+      <Beitrag Bnr="0">
+        <Btitel>Erster Beitrag</Btitel>
+        <Bkommentare>
+          <Kommentar Knr="0" Kuser="0">Der erste Kommentar von Nigel zum ersten Beitrag</Kommentar>
+        </Bkommentare>
+        <Bbild>http://tempuri.org</Bbild>
+        Das ist der Inhalt des ersten Beitrages. Das Wetter ist schoen.
+      </Beitrag>
+      <Beitrag Bnr="1">
+      	<Btitel>Zweite Beitrag</Btitel>
+      	<Bkommentare>
+      		<Kommentar Knr="0" Kuser="0">Erster Kommentar von Nigel zum zweiten Beitrag</Kommentar>
+      		<Kommentar Knr="1" Kuser="1">Erster Kommentar von Bernd zum zweiten Beitrag</Kommentar>
+      	</Bkommentare>
+      </Beitrag>
+    </Beitraege>
+    
+  </Kanal>
+</Dienst>
