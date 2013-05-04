@@ -1,6 +1,122 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-	<!-- Hier steht nichts -->
+
+	<!-- (U)ser Elemente -->
+	<xs:element name="Uname" type="xs:string" />
+	<xs:element name="Ualter" type="xs:integer" />
+	<xs:element name="Ugeschlecht" type="xs:string" />
+	<xs:element name="Ukanal" type="xs:integer" />
+
+	<!-- (K)anal Elemente -->
+	<xs:element name="Kname" type="xs:string" />
+	<xs:element name="Kbeschreibung" type="xs:string" />
+	<xs:element name="Kbild" type="xs:anyURI" />
+	<xs:element name="Kbetreiber" type="xs:integer" />
+	<xs:element name="Kkommentare" type="Kommentare" />
+
+	<!-- Kommentare Elemente -->
+	<xs:element name="Kommentar">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute ref="Kuser" />
+					<xs:attribute ref="Knr" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<!-- (B)eitrag Elemente-->
+	<xs:element name="Bkommentare" type="Kommentare" />
+	<xs:element name="Btitel" type="xs:string" />
+	<xs:element name="Bbild" type="xs:anyURI" />
+
+	<!-- (U)ser Attribute -->
+	<xs:attribute name="Uid" type="xs:integer" />
+
+	<!-- Kommentar Attribute -->
+	<xs:attribute name="Knr" type="xs:integer" />
+	<xs:attribute name="Kuser" type="xs:integer" />
+
+	<!-- (K)anal Attribute -->
+	<xs:attribute name="Kid" type="xs:integer" />
+
+
+	<!-- User (Benutzer) -->
+	<xs:element name="User">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Uname" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="Ualter" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="Ugeschlecht" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="Abonemments" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="Ukanal" minOccurs="0" maxOccurs="1" />
+			</xs:sequence>
+			<xs:attribute ref="Uid" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Abonnements -->
+	<xs:element name="Abonemments">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="User" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Kanal -->
+	<xs:element name="Kanal">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Kname" minOccurs="1" maxOccurs="1" />
+				<xs:element ref="Kbeschreibung" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="Kbild" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="Kkommentare" minOccurs="0" />
+				<xs:element ref="Kbetreiber" minOccurs="1" />
+				<xs:element ref="Beitraege" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attribute ref="Kid" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+
+	<!-- Kommentare -->
+	<xs:complexType name="Kommentare">
+		<xs:sequence>
+			<xs:element ref="Kommentar" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<!-- Beitraege -->
+	<xs:element name="Beitraege">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Beitrag" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<!-- Beitrag -->
+	<xs:element name="Beitrag">
+		<xs:complexType mixed="true">
+			<xs:sequence>
+				<xs:element ref="Btitel" maxOccurs="unbounded" />
+				<xs:element ref="Bkommentare" />
+				<xs:element ref="Bbild" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Dienst -->
+	<xs:element name="Dienst">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="User" />
+				<xs:element ref="Kanal" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
 
 </xs:schema>
