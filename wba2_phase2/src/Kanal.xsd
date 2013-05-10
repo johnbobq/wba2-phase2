@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:include schemaLocation="User.xsd" />
+
+	<!-- (K)anal Elemente -->
+	<xs:element name="Kname" type="xs:string" />
+	<xs:element name="Kbeschreibung" type="xs:string" />
+	<xs:element name="Kbild" type="xs:anyURI" />
+	<xs:element name="Kbetreiber" type="xs:integer" />
+	<xs:element name="Kkommentare" type="Kommentare" />
+
+	<!-- Kommentare Elemente -->
+	<xs:element name="Kommentar">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute ref="Kuser" />
+					<xs:attribute ref="Knr" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- (B)eitrag Elemente -->
+	<xs:element name="Bkommentare" type="Kommentare" />
+	<xs:element name="Btitel" type="xs:string" />
+	<xs:element name="Bbild" type="xs:anyURI" />
+
+	<!-- (K)anal Attribute -->
+	<xs:attribute name="Kid" type="xs:integer" />
+
+	<!-- Kommentar Attribute -->
+	<xs:attribute name="Knr" type="xs:integer" />
+	<xs:attribute name="Kuser" type="xs:integer" />
+
+	<!-- Beitrag Attribute -->
+	<xs:attribute name="Bnr" type="xs:integer" />
+
+
+
+
+	<!-- Kanal -->
+	<xs:element name="Kanal">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Kname" minOccurs="1" maxOccurs="1" />
+				<xs:element ref="Kbeschreibung" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="Kbild" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="Kkommentare" minOccurs="0" />
+				<xs:element ref="Kbetreiber" minOccurs="1" />
+				<xs:element ref="Beitraege" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attribute ref="Kid" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+
+	<!-- Kommentare -->
+	<xs:complexType name="Kommentare">
+		<xs:sequence>
+			<xs:element ref="Kommentar" minOccurs="1" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- Beitraege -->
+	<xs:element name="Beitraege">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Beitrag" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Beitrag f -->
+	<xs:element name="Beitrag">
+		<xs:complexType mixed="true">
+			<xs:sequence>
+				<xs:element ref="Btitel" maxOccurs="unbounded" />
+				<xs:element ref="Bkommentare" maxOccurs="1" />
+				<xs:element ref="Bbild" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attribute ref="Bnr" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+
+</xs:schema>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:include schemaLocation="Kanal.xsd" />
+
+	<!-- (U)ser Elemente -->
+	<xs:element name="Uname" type="xs:string" />
+	<xs:element name="Ualter" type="xs:integer" />
+	<xs:element name="Ugeschlecht">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="m" />
+				<xs:enumeration value="w" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="Ukanal" type="xs:integer" />
+	
+	<!-- Abonnements Elemente -->
+	<xs:element name="Auid" type="xs:integer" />
+	
+	<!-- (U)ser Attribute -->
+	<xs:attribute name="Uid" type="xs:integer" />
+	
+	
+	
+	<!-- User (Benutzer) -->
+	<xs:element name="User">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Uname" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="Ualter" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="Ugeschlecht" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="Abonemments" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="Ukanal" minOccurs="0" maxOccurs="1" />
+			</xs:sequence>
+			<xs:attribute ref="Uid" use="required" />
+		</xs:complexType>
+	</xs:element>
+	
+	<!-- Abonnements -->
+	<xs:element name="Abonemments">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Auid" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+
+</xs:schema>
