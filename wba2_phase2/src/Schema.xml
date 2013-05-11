@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Dienst xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Plattform.xsd">
+<Dienst xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Dienst.xsd">
   
   <!-- Nigel hat die User ID 0, außerdem ist er Betreiber vom Kanal mit der ID 0.
   	   Nigel hat keine Abonnements sondern betreib nur einen Kanal-->

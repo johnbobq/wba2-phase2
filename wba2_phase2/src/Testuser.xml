@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<User Uid="0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="User.xsd">
+
+	<Uname>Nigel</Uname>
+    <Ualter>23</Ualter>
+    <Ugeschlecht>m</Ugeschlecht>
+    <Ukanal>0</Ukanal>
+
+</User>
