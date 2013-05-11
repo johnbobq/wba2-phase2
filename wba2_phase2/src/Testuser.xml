@@ -12,16 +12,4 @@
         <Ugeschlecht>w</Ugeschlecht>
         <Ukanal>0</Ukanal>
     </User>
-    <User Uid="1">
-        <Uname>Nigel</Uname>
-        <Ualter>23</Ualter>
-        <Ugeschlecht>m</Ugeschlecht>
-        <Ukanal>0</Ukanal>
-    </User>
-    <User Uid="2">
-        <Uname>Test</Uname>
-        <Ualter>5</Ualter>
-        <Ugeschlecht>w</Ugeschlecht>
-        <Ukanal>0</Ukanal>
-    </User>
 </Dienst>
