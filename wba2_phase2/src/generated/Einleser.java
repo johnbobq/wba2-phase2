@@ -30,8 +30,10 @@ public class Einleser {
 		
 		// Unmarshaller: Holt Benutzer aus User_xml
 		Unmarshaller um = context.createUnmarshaller();
-	    Dienst dienst = (Dienst) um.unmarshal(new FileReader(User_xml));
-//	    List<User> list = dienst.getUser();
+	    Dienst user = (Dienst) um.unmarshal(new FileReader(User_xml));
+	    // Gleiche für Kanal_xml
+	    Dienst kanal = (Dienst) um.unmarshal(new FileReader(Kanal_xml));
+	    
 
 		
 		// Test Benutzer anlegen
@@ -46,13 +48,27 @@ public class Einleser {
 		u2.setUgeschlecht("w");
 		u2.setUid(2);
 		u2.setUname("Test");
+		// Liste aller Benutzer
+		List<User> ulist = user.getUser();
+		
+		// Test Kanal anlegen
+		Kanal k1 = new Kanal();
+		k1.setKid(0);
+		k1.setKname("Meinurlaub");
+		k1.setKbetreiber(1);
+		// Liste aller Kanäle
+		List<Kanal> klist = kanal.getKanal();
 		
 		// Nigel wird nun in in die Userliste von Dienst geshrieben.
-		dienst.getUser().add(u1);
-		dienst.getUser().add(u2);
+		user.getUser().add(u1);
+		user.getUser().add(u2);
+		
+		kanal.getKanal().add(k1);
 		
 		// Die User List in Testuser.xml schreiben
-		m.marshal(dienst, new File(User_xml));
+		m.marshal(user, new File(User_xml));
+		// Kanaäle in Testkanal.xml schreiben
+		m.marshal(kanal, new File(Kanal_xml));
 		
 		System.out.println("Fehlerfrei");
 		

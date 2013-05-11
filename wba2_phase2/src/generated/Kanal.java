@@ -8,7 +8,7 @@
 
 package generated;
 
-import java.math.BigInteger;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -67,11 +67,11 @@ public class Kanal {
     @XmlElement(name = "Kkommentare")
     protected Kommentare kkommentare;
     @XmlElement(name = "Kbetreiber", required = true)
-    protected BigInteger kbetreiber;
+    protected int kbetreiber;
     @XmlElement(name = "Beitraege", required = true)
     protected List<Beitraege> beitraege;
     @XmlAttribute(name = "Kid", required = true)
-    protected BigInteger kid;
+    protected int kid;
 
     /**
      * Ruft den Wert der kname-Eigenschaft ab.
@@ -174,10 +174,10 @@ public class Kanal {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link int }
      *     
      */
-    public BigInteger getKbetreiber() {
+    public int getKbetreiber() {
         return kbetreiber;
     }
 
@@ -186,10 +186,10 @@ public class Kanal {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link int }
      *     
      */
-    public void setKbetreiber(BigInteger value) {
+    public void setKbetreiber(int value) {
         this.kbetreiber = value;
     }
 
@@ -227,10 +227,10 @@ public class Kanal {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link int }
      *     
      */
-    public BigInteger getKid() {
+    public int getKid() {
         return kid;
     }
 
@@ -239,10 +239,10 @@ public class Kanal {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link int }
      *     
      */
-    public void setKid(BigInteger value) {
+    public void setKid(int value) {
         this.kid = value;
     }
 
