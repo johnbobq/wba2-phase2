@@ -6,9 +6,9 @@
 //
 
 
-package generated;
+package tmp;
 
-
+import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -45,9 +45,9 @@ public class Kommentar {
     @XmlValue
     protected String value;
     @XmlAttribute(name = "Kuser")
-    protected int kuser;
+    protected BigInteger kuser;
     @XmlAttribute(name = "Knr")
-    protected int knr;
+    protected BigInteger knr;
 
     /**
      * Ruft den Wert der value-Eigenschaft ab.
@@ -78,10 +78,10 @@ public class Kommentar {
      * 
      * @return
      *     possible object is
-     *     {@link int }
+     *     {@link BigInteger }
      *     
      */
-    public int getKuser() {
+    public BigInteger getKuser() {
         return kuser;
     }
 
@@ -90,10 +90,10 @@ public class Kommentar {
      * 
      * @param value
      *     allowed object is
-     *     {@link int }
+     *     {@link BigInteger }
      *     
      */
-    public void setKuser(int value) {
+    public void setKuser(BigInteger value) {
         this.kuser = value;
     }
 
@@ -102,10 +102,10 @@ public class Kommentar {
      * 
      * @return
      *     possible object is
-     *     {@link int }
+     *     {@link BigInteger }
      *     
      */
-    public int getKnr() {
+    public BigInteger getKnr() {
         return knr;
     }
 
@@ -114,10 +114,10 @@ public class Kommentar {
      * 
      * @param value
      *     allowed object is
-     *     {@link int }
+     *     {@link BigInteger }
      *     
      */
-    public void setKnr(int value) {
+    public void setKnr(BigInteger value) {
         this.knr = value;
     }
 

@@ -23,6 +23,8 @@ public class Einleser {
 	public static void main(String[] args) throws JAXBException, FileNotFoundException {
 		int w = 0;
 
+		
+		// Gleiche wie testdaten() s.U.
 		JAXBContext context = JAXBContext.newInstance("generated");
 		Unmarshaller um = context.createUnmarshaller();
 		Dienst user = (Dienst) um.unmarshal(new FileReader(User_xml));
@@ -88,6 +90,7 @@ public class Einleser {
 		u1.setUgeschlecht("m");
 		u1.setUid(1);
 		u1.setUname("Nigel");
+		u1.setUkanal(1);
 
 		User u2 = new User();
 		u2.setUalter(5);
@@ -97,10 +100,23 @@ public class Einleser {
 
 		// Test Kanal anlegen
 		Kanal k1 = new Kanal();
-		k1.setKid(0);
+		k1.setKid(1);
 		k1.setKname("Meinurlaub");
+		k1.setKbeschreibung("Ein Kanal der von Nigel geführt wird");
 		k1.setKbetreiber(1);
-
+		// Kommentar anlegen um ihn den KanalKommentaren hinzuzufügen
+		Kommentar kom1 = new Kommentar();
+		kom1.setKnr(1);
+		kom1.setKuser(1);
+		kom1.setValue("Der erste Kommentar zum Kanal");
+		//
+		k1.getKkommentare().getKommentar().add(kom1);
+		// Beitrag zum Kanal hinzufügen
+		Beitraege bt1 = new Beitraege();
+		Beitrag b1 = new Beitrag();
+		b1.setBnr(1);
+		/** DÄMLICHER SCHEISS */
+		
 		// Nigel wird nun in in die Userliste von Dienst geshrieben.
 		user.getUser().add(u1);
 		user.getUser().add(u2);
@@ -114,6 +130,7 @@ public class Einleser {
 
 		System.out.println("Fehlerfrei");
 	}
+	
 	
 	
 

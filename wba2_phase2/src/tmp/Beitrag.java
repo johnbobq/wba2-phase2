@@ -6,9 +6,9 @@
 //
 
 
-package generated;
+package tmp;
 
-
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -59,7 +59,7 @@ public class Beitrag {
     @XmlSchemaType(name = "anyURI")
     protected List<String> bbild;
     @XmlAttribute(name = "Bnr", required = true)
-    protected int bnr;
+    protected BigInteger bnr;
 
     /**
      * Gets the value of the btitel property.
@@ -148,10 +148,10 @@ public class Beitrag {
      * 
      * @return
      *     possible object is
-     *     {@link int }
+     *     {@link BigInteger }
      *     
      */
-    public int getBnr() {
+    public BigInteger getBnr() {
         return bnr;
     }
 
@@ -160,10 +160,10 @@ public class Beitrag {
      * 
      * @param value
      *     allowed object is
-     *     {@link int }
+     *     {@link BigInteger }
      *     
      */
-    public void setBnr(int value) {
+    public void setBnr(BigInteger value) {
         this.bnr = value;
     }
 
