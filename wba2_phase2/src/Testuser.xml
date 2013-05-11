@@ -1,9 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<User Uid="0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="User.xsd">
-
-	<Uname>Nigel</Uname>
-    <Ualter>23</Ualter>
-    <Ugeschlecht>m</Ugeschlecht>
-    <Ukanal>0</Ukanal>
-
-</User>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Dienst>
+    <User Uid="0">
+        <Uname>Nigel</Uname>
+        <Ualter>23</Ualter>
+        <Ugeschlecht>m</Ugeschlecht>
+        <Ukanal>0</Ukanal>
+    </User>
+    <User Uid="1">
+        <Uname>Nigel</Uname>
+        <Ualter>23</Ualter>
+        <Ugeschlecht>m</Ugeschlecht>
+        <Ukanal>0</Ukanal>
+    </User>
+    <User Uid="1">
+        <Uname>Nigel</Uname>
+        <Ualter>23</Ualter>
+        <Ugeschlecht>m</Ugeschlecht>
+        <Ukanal>0</Ukanal>
+    </User>
+    <User Uid="2">
+        <Uname>Test</Uname>
+        <Ualter>5</Ualter>
+        <Ugeschlecht>w</Ugeschlecht>
+        <Ukanal>0</Ukanal>
+    </User>
+</Dienst>

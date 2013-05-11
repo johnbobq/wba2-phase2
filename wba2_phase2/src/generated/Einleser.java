@@ -35,17 +35,24 @@ public class Einleser {
 
 		
 		// Test Benutzer anlegen
-		User u = new User();
-		u.setUalter(23);
-		u.setUgeschlecht("m");
-		u.setUid(1);
-		u.setUname("Nigel");
+		User u1 = new User();
+		u1.setUalter(23);
+		u1.setUgeschlecht("m");
+		u1.setUid(1);
+		u1.setUname("Nigel");
+		
+		User u2 = new User();
+		u2.setUalter(5);
+		u2.setUgeschlecht("w");
+		u2.setUid(2);
+		u2.setUname("Test");
 		
 		// Nigel wird nun in in die Userliste von Dienst geshrieben.
-		dienst.getUser().add(u);
+		dienst.getUser().add(u1);
+		dienst.getUser().add(u2);
 		
 		// Die User List in Testuser.xml schreiben
-		m.marshal(dienst.user, new File(User_xml));
+		m.marshal(dienst, new File(User_xml));
 		
 		System.out.println("Fehlerfrei");
 		
