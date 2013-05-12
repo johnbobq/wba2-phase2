@@ -16,5 +16,6 @@
 	<classpathentry kind="lib" path="D:/Desktopordner/Programme/eclipse/WBA_2_Phase_2_jars/jersey/jettison-1.1.jar"/>
 	<classpathentry kind="lib" path="D:/Desktopordner/Programme/eclipse/WBA_2_Phase_2_jars/jersey/jsr311-api-1.1.1.jar"/>
 	<classpathentry kind="lib" path="D:/Desktopordner/Programme/eclipse/WBA_2_Phase_2_jars/grizzly-servlet-webserver-1.9.18.jar"/>
+	<classpathentry kind="lib" path="D:/Desktopordner/Programme/eclipse/WBA_2_Phase_2_jars/restclient-ui-2.3.3-jar-with-dependencies.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
