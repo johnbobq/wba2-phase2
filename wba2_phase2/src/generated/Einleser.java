@@ -48,13 +48,42 @@ public class Einleser {
 				List<Kanal> klist = kanal.getKanal();
 
 				// Gib die Benutzer aus User_xml
+				System.out.println("--------------------------------------BENUTZER--------------------------------------");
 				for (User u : ulist) {
-					System.out.println("Alter: " + u.getUalter() + "\t" + "Name:" + u.getUname());
+					System.out.println("\t Name: " + u.getUname() + "\t Alter: " + u.getUalter() + "\t" + "Geschlecht: "
+					+ u.getUgeschlecht() + "\t betreibt den Kanal mit der ID: " + u.getUkanal());
 				}
-				// Kanal_xml
+				// Kanal_xml Ausgabe
+				System.out.println("--------------------------------------KANÄLE--------------------------------------");
 				for (Kanal k : klist) {
-					System.out.println("Kanäle: ");
-					System.out.println(k.getKname());
+					System.out.println("Kanal:" + "\t`" +k.getKname()+"`" +" hat die Kanal-ID: " + k.getKid()
+					+ " Und wird geleitet von User ID: " + k.getKbetreiber());
+					System.out.println("\t Beschreibung: " + k.getKbeschreibung());
+					System.out.println("\t\t----------------------------");
+					System.out.println("\t Kanalkommentare: ");
+					// Kanalkommentar holen
+					List<Kommentar> kkliste =k.getKkommentare().getKommentar();
+					for(Kommentar kk : kkliste) {
+						System.out.println("\t\t KommentarNr:" + kk.getKnr() + "\t Benutzer: " +kk.getKuser());
+						System.out.println("\t\tSchrieb: " +kk.getValue());
+					}
+					System.out.println("");
+					System.out.println("\t\tBeiträge: ");
+					// Beiträge mit Content und seinen kOmmentaren holen holen
+					List<Beitrag> bliste = k.getBeitraege().getBeitrag();
+					for (Beitrag b : bliste) {
+						System.out.println("\t Titel: " + b.getBtitel()  + "BeitragNr: " + b.getBnr() );
+						System.out.println("\t \t " + b.getBcontent());
+						System.out.println("\t \t \t ---------- KOMMENTARE ---------");
+						// Beitragskommentare holen
+						List<Kommentar> bkliste = b.getBkommentare().getKommentar();
+						for(Kommentar bk : bkliste) {
+							System.out.println("\t \t \t Beitragsnummer: " +bk.getKnr() + "Von Benutzer mit der ID:" + bk.getKuser()
+							+ "Hat geschrieben: " + bk.getValue()); 
+						}
+						
+					}
+					
 				}
 				w = 0;
 				break;
@@ -85,43 +114,68 @@ public class Einleser {
 		Dienst kanal = (Dienst) um.unmarshal(new FileReader(Kanal_xml));
 
 		// Test Benutzer anlegen
-		User u1 = new User();
-		u1.setUalter(23);
-		u1.setUgeschlecht("m");
-		u1.setUid(1);
-		u1.setUname("Nigel");
-		u1.setUkanal(1);
+		User user1 = new User();
+		user1.setUalter(23);
+		user1.setUgeschlecht("m");
+		user1.setUid(1);
+		user1.setUname("Nigel");
+		user1.setUkanal(1);
 
-		User u2 = new User();
-		u2.setUalter(5);
-		u2.setUgeschlecht("w");
-		u2.setUid(2);
-		u2.setUname("Test");
+		User user2 = new User();
+		user2.setUalter(5);
+		user2.setUgeschlecht("w");
+		user2.setUid(2);
+		user2.setUname("Test");
 
 		// Test Kanal anlegen
-		Kanal k1 = new Kanal();
-		k1.setKid(1);
-		k1.setKname("Meinurlaub");
-		k1.setKbeschreibung("Ein Kanal der von Nigel geführt wird");
-		k1.setKbetreiber(1);
+		// KanalID=1, Name="MeinUrlaub", Betreiber UID = 1 (Nigel)
+		Kanal kanal1 = new Kanal();
+		kanal1.setKid(1);
+		kanal1.setKname("Meinurlaub");
+		kanal1.setKbeschreibung("Ein Kanal der von Nigel geführt wird");
+		kanal1.setKbetreiber(1);
+		
 		// Kommentar anlegen um ihn den KanalKommentaren hinzuzufügen
-		Kommentar kom1 = new Kommentar();
-		kom1.setKnr(1);
-		kom1.setKuser(1);
-		kom1.setValue("Der erste Kommentar zum Kanal");
-		//
-		k1.getKkommentare().getKommentar().add(kom1);
-		// Beitrag zum Kanal hinzufügen
+		// KommentarNr=1, Erstelle UID=1 (Nigel)
+		Kommentar komm1 = new Kommentar();
+		komm1.setKnr(1);
+		komm1.setKuser(1);
+		komm1.setValue("Der erste Kommentar zum Kanal");
+		// Kommentare Menge wo Kommentare angehängt werden.
+//		Kommentare kanalkommentare = new Kommentare();
+//		kanalkommentare.getKommentar().add(komm1);
+//		kanal1.getKkommentare().add(kanalkommentare);
+		kanal1.getKkommentare().getKommentar().add(komm1);
+		
 		Beitraege bt1 = new Beitraege();
-		Beitrag b1 = new Beitrag();
-		b1.setBnr(1);
-		/** DÄMLICHER SCHEISS */
+		Beitrag beitrag1 = new Beitrag();
+		beitrag1.setBnr(1);
+		beitrag1.setBcontent("Das ist der erste Beitrag, das ist eintoller Urlaub");
+		beitrag1.getBtitel().add("ERSTER");
+		
+		// Beitragskommentar
+		// Erster Kommentar zum ersten Beitrag von UID = 1 (Nigel)
+		Kommentar kommentar2 = new Kommentar();
+		kommentar2.setKnr(1);
+		kommentar2.setKuser(1);
+		kommentar2.setValue("SCHÖNER BERICHT");
+		// Beitragskommentare erstellen um Kommentare anzuhängen
+		Kommentare beitragskommentare = new Kommentare();
+		beitragskommentare.getKommentar().add(kommentar2);
+		beitrag1.setBkommentare(beitragskommentare);
+		
+		// Beitrag zu "Beiträge" hinzufügen
+//		bt1.getBeitrag().add(beitrag1);
+		
+		// Beiträge zu Kanal hinzufügen
+//		kanal1.getBeitraege().add(bt1);
+		kanal1.getBeitraege().getBeitrag().add(beitrag1);
 		
 		// Nigel wird nun in in die Userliste von Dienst geshrieben.
-		user.getUser().add(u1);
-		user.getUser().add(u2);
+		user.getUser().add(user1);
+		user.getUser().add(user2);
 
-		kanal.getKanal().add(k1);
+		kanal.getKanal().add(kanal1);
 
 		// Die User List in Testuser.xml schreiben
 		m.marshal(user, new File(User_xml));

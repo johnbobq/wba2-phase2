@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2013.05.11 um 08:51:31 PM CEST 
+// Generiert: 2013.05.12 um 05:28:18 PM CEST 
 //
 
 
@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}Btitel" maxOccurs="unbounded"/>
  *         &lt;element ref="{}Bkommentare"/>
  *         &lt;element ref="{}Bbild" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{}Bcontent"/>
  *       &lt;/sequence>
  *       &lt;attribute ref="{}Bnr use="required""/>
  *     &lt;/restriction>
@@ -46,7 +47,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "btitel",
     "bkommentare",
-    "bbild"
+    "bbild",
+    "bcontent"
 })
 @XmlRootElement(name = "Beitrag")
 public class Beitrag {
@@ -58,6 +60,8 @@ public class Beitrag {
     @XmlElement(name = "Bbild")
     @XmlSchemaType(name = "anyURI")
     protected List<String> bbild;
+    @XmlElement(name = "Bcontent", required = true)
+    protected String bcontent;
     @XmlAttribute(name = "Bnr", required = true)
     protected int bnr;
 
@@ -141,6 +145,30 @@ public class Beitrag {
             bbild = new ArrayList<String>();
         }
         return this.bbild;
+    }
+
+    /**
+     * Ruft den Wert der bcontent-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getBcontent() {
+        return bcontent;
+    }
+
+    /**
+     * Legt den Wert der bcontent-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setBcontent(String value) {
+        this.bcontent = value;
     }
 
     /**

@@ -2,15 +2,13 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2013.05.11 um 08:51:31 PM CEST 
+// Generiert: 2013.05.12 um 06:31:57 PM CEST 
 //
 
 
 package tmp;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -35,7 +33,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}Kbild" minOccurs="0"/>
  *         &lt;element ref="{}Kkommentare" minOccurs="0"/>
  *         &lt;element ref="{}Kbetreiber"/>
- *         &lt;element ref="{}Beitraege" maxOccurs="unbounded"/>
+ *         &lt;element ref="{}Beitraege" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attribute ref="{}Kid use="required""/>
  *     &lt;/restriction>
@@ -68,8 +66,8 @@ public class Kanal {
     protected Kommentare kkommentare;
     @XmlElement(name = "Kbetreiber", required = true)
     protected BigInteger kbetreiber;
-    @XmlElement(name = "Beitraege", required = true)
-    protected List<Beitraege> beitraege;
+    @XmlElement(name = "Beitraege")
+    protected Beitraege beitraege;
     @XmlAttribute(name = "Kid", required = true)
     protected BigInteger kid;
 
@@ -194,32 +192,27 @@ public class Kanal {
     }
 
     /**
-     * Gets the value of the beitraege property.
+     * Ruft den Wert der beitraege-Eigenschaft ab.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the beitraege property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getBeitraege().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Beitraege }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link Beitraege }
+     *     
      */
-    public List<Beitraege> getBeitraege() {
-        if (beitraege == null) {
-            beitraege = new ArrayList<Beitraege>();
-        }
-        return this.beitraege;
+    public Beitraege getBeitraege() {
+        return beitraege;
+    }
+
+    /**
+     * Legt den Wert der beitraege-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Beitraege }
+     *     
+     */
+    public void setBeitraege(Beitraege value) {
+        this.beitraege = value;
     }
 
     /**

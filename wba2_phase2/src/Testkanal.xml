@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Dienst>
-    
+    <Kanal Kid="1">
+        <Kname>Meinurlaub</Kname>
+        <Kbeschreibung>Ein Kanal der von Nigel geführt wird</Kbeschreibung>
+        <Kkommentare>
+            <Kommentar Kuser="1" Knr="1">Der erste Kommentar zum Kanal</Kommentar>
+        </Kkommentare>
+        <Kbetreiber>1</Kbetreiber>
+        <Beitraege>
+            <Beitrag Bnr="1">
+                <Btitel>ERSTER</Btitel>
+                <Bkommentare>
+                    <Kommentar Kuser="1" Knr="1">SCHÖNER BERICHT</Kommentar>
+                </Bkommentare>
+                <Bcontent>Das ist der erste Beitrag, das ist eintoller Urlaub</Bcontent>
+            </Beitrag>
+        </Beitraege>
+    </Kanal>
 </Dienst>

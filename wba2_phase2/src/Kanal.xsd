@@ -21,11 +21,19 @@
 			</xs:simpleContent>
 		</xs:complexType>
 	</xs:element>
+	
+	<!-- Kommentare -->
+	<xs:complexType name="Kommentare">
+		<xs:sequence>
+			<xs:element ref="Kommentar" minOccurs="1" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
 
 	<!-- (B)eitrag Elemente -->
 	<xs:element name="Bkommentare" type="Kommentare" />
 	<xs:element name="Btitel" type="xs:string" />
 	<xs:element name="Bbild" type="xs:anyURI" />
+	<xs:element name="Bcontent" type="xs:string" />
 
 	<!-- (K)anal Attribute -->
 	<xs:attribute name="Kid" type="xs:integer" />
@@ -47,21 +55,16 @@
 				<xs:element ref="Kname" minOccurs="1" maxOccurs="1" />
 				<xs:element ref="Kbeschreibung" minOccurs="0" maxOccurs="1" />
 				<xs:element ref="Kbild" minOccurs="0" maxOccurs="1" />
-				<xs:element ref="Kkommentare" minOccurs="0" />
+				<xs:element ref="Kkommentare" minOccurs="0" maxOccurs="1" />
 				<xs:element ref="Kbetreiber" minOccurs="1" />
-				<xs:element ref="Beitraege" maxOccurs="unbounded" />
+				<xs:element ref="Beitraege" minOccurs="0" maxOccurs="1" />
 			</xs:sequence>
 			<xs:attribute ref="Kid" use="required" />
 		</xs:complexType>
 	</xs:element>
 
 
-	<!-- Kommentare -->
-	<xs:complexType name="Kommentare">
-		<xs:sequence>
-			<xs:element ref="Kommentar" minOccurs="1" maxOccurs="unbounded" />
-		</xs:sequence>
-	</xs:complexType>
+	
 
 	<!-- Beitraege -->
 	<xs:element name="Beitraege">
@@ -76,9 +79,10 @@
 	<xs:element name="Beitrag">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="Btitel" maxOccurs="unbounded" />
+				<xs:element ref="Btitel" minOccurs="1" maxOccurs="unbounded" />
 				<xs:element ref="Bkommentare" maxOccurs="1" />
 				<xs:element ref="Bbild" minOccurs="0" maxOccurs="unbounded" />
+				<xs:element ref="Bcontent" minOccurs="1" />
 			</xs:sequence>
 			<xs:attribute ref="Bnr" use="required" />
 		</xs:complexType>
