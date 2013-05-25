@@ -4,7 +4,7 @@ package restservice;
 import com.sun.grizzly.http.SelectorThread;
 import com.sun.jersey.api.container.grizzly.GrizzlyServerFactory;
 
-public class HalloServer
+public class UrlaubServer
 {
    public static void main( String[] args ) throws Exception
    {
@@ -14,7 +14,7 @@ public class HalloServer
       SelectorThread srv = GrizzlyServerFactory.create( url );
 
       System.out.println( "URL: " + url );
-      Thread.sleep( 1000 * Integer.parseInt( sec ) );
+      Thread.sleep( 6000 * Integer.parseInt( sec ) );
       srv.stopEndpoint();
    }
 }

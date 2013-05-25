@@ -2,18 +2,18 @@ package restservice;
 
 import javax.ws.rs.*;
 
-@Path( "/helloworld" )
-public class HalloService
+@Path( "/user" )
+public class UserService
 {
    @GET @Produces( "text/plain" )
    public String halloText( @QueryParam("name") String name )
    {
-      return "Hallo " + name;
+      return "Hier Liste der Benutzer ";
    }
 
    @GET @Produces( "text/html" )
    public String halloHtml( @QueryParam("name") String name )
    {
-      return "<html><title>HelloWorld</title><body><h2>Html: Hallo " + name + "</h2></body></html>";
+      return "<html><title>HelloWorld</title><body><h2>Html: Hier Liste der Benutzer</h2></body></html>";
    }
 }
