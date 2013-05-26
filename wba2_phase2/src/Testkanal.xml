@@ -17,4 +17,22 @@
             </Beitrag>
         </Beitraege>
     </Kanal>
+    
+    <Kanal Kid="2">
+        <Kname>Regenurlaub</Kname>
+        <Kbeschreibung>Urlaubsbericht über Regen</Kbeschreibung>
+        <Kkommentare>
+            <Kommentar Kuser="2" Knr="1">Langweiliger Kanal</Kommentar>
+        </Kkommentare>
+        <Kbetreiber>2</Kbetreiber>
+        <Beitraege>
+            <Beitrag Bnr="1">
+                <Btitel>ERSTER</Btitel>
+                <Bkommentare>
+                    <Kommentar Kuser="1" Knr="1">Toller Bericht</Kommentar>
+                </Bkommentare>
+                <Bcontent>Zuviel Regen, habe keinen Regenschirm</Bcontent>
+            </Beitrag>
+        </Beitraege>
+    </Kanal>
 </Dienst>
