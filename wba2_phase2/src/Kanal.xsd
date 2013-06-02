@@ -79,7 +79,7 @@
 	<xs:element name="Beitrag">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="Btitel" minOccurs="1" maxOccurs="unbounded" />
+				<xs:element ref="Btitel" minOccurs="1" />
 				<xs:element ref="Bkommentare" maxOccurs="1" />
 				<xs:element ref="Bbild" minOccurs="0" maxOccurs="unbounded" />
 				<xs:element ref="Bcontent" minOccurs="1" />

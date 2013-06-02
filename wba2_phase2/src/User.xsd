@@ -31,7 +31,7 @@
 				<xs:element ref="Uname" minOccurs="0" maxOccurs="1" />
 				<xs:element ref="Ualter" minOccurs="0" maxOccurs="1" />
 				<xs:element ref="Ugeschlecht" minOccurs="0" maxOccurs="1" />
-				<xs:element ref="Abonemments" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="Abonemments" minOccurs="0" maxOccurs="unbounded" />
 				<xs:element ref="Ukanal" minOccurs="0" maxOccurs="1" />
 			</xs:sequence>
 			<xs:attribute ref="Uid" use="required" />

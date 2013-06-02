@@ -2,13 +2,13 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2013.05.12 um 05:28:18 PM CEST 
+// Generiert: 2013.06.02 um 09:22:23 PM CEST 
 //
 
 
 package generated;
 
-
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{}Btitel" maxOccurs="unbounded"/>
+ *         &lt;element ref="{}Btitel"/>
  *         &lt;element ref="{}Bkommentare"/>
  *         &lt;element ref="{}Bbild" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element ref="{}Bcontent"/>
@@ -54,7 +54,7 @@ import javax.xml.bind.annotation.XmlType;
 public class Beitrag {
 
     @XmlElement(name = "Btitel", required = true)
-    protected List<String> btitel;
+    protected String btitel;
     @XmlElement(name = "Bkommentare", required = true)
     protected Kommentare bkommentare;
     @XmlElement(name = "Bbild")
@@ -66,32 +66,27 @@ public class Beitrag {
     protected int bnr;
 
     /**
-     * Gets the value of the btitel property.
+     * Ruft den Wert der btitel-Eigenschaft ab.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the btitel property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getBtitel().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public List<String> getBtitel() {
-        if (btitel == null) {
-            btitel = new ArrayList<String>();
-        }
-        return this.btitel;
+    public String getBtitel() {
+        return btitel;
+    }
+
+    /**
+     * Legt den Wert der btitel-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setBtitel(String value) {
+        this.btitel = value;
     }
 
     /**
@@ -176,7 +171,7 @@ public class Beitrag {
      * 
      * @return
      *     possible object is
-     *     {@link int }
+     *     {@link BigInteger }
      *     
      */
     public int getBnr() {
@@ -188,7 +183,7 @@ public class Beitrag {
      * 
      * @param value
      *     allowed object is
-     *     {@link int }
+     *     {@link BigInteger }
      *     
      */
     public void setBnr(int value) {

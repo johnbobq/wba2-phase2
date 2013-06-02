@@ -17,7 +17,7 @@ import javax.xml.bind.Unmarshaller;
 import generated.*;
 
 @Path( "/channels" )
-public class ChannelsService
+public class ChannelService
 {
    
 	@GET
@@ -34,7 +34,7 @@ public class ChannelsService
 	@GET
 	@Path("/{Kid}")
 	@Produces("application/xml")
-	public Dienst getUser(@PathParam("Kid") int i) throws JAXBException, FileNotFoundException {
+	public Dienst getChannel(@PathParam("Kid") int i) throws JAXBException, FileNotFoundException {
 
 		JAXBContext context = JAXBContext.newInstance("generated");
 		Unmarshaller um = context.createUnmarshaller();
@@ -51,7 +51,7 @@ public class ChannelsService
 	@DELETE
 	@Path("/{Kid}")
 	@Produces("application/xml")
-	public Dienst deleteUser(@PathParam("Kid") int i) throws JAXBException, FileNotFoundException {
+	public Dienst deleteChannel(@PathParam("Kid") int i) throws JAXBException, FileNotFoundException {
 
 		JAXBContext context = JAXBContext.newInstance("generated");
 		Unmarshaller um = context.createUnmarshaller();
@@ -77,7 +77,7 @@ public class ChannelsService
 	@POST
 	@Path("/{Kid}")
 	@Produces("application/xml")
-	public Dienst postUser(@FormParam("Kname") String name, @FormParam("Beschreibung") int beschreibung) throws JAXBException, FileNotFoundException {
+	public Dienst postChannel(@FormParam("Kname") String name, @FormParam("Beschreibung") String beschreibung, @FormParam("Betreiber") int betreiber) throws JAXBException, FileNotFoundException {
 
 		
 		JAXBContext context = JAXBContext.newInstance("generated");
@@ -87,7 +87,9 @@ public class ChannelsService
 
 		Kanal newKanal = new Kanal();
 		newKanal.setKname(name);
+		newKanal.setKbeschreibung(beschreibung);
 		newKanal.setKid(channels.getKanal().size()+1);
+		newKanal.setKbetreiber(betreiber);
 		
 		channels.getKanal().add(newKanal);
 

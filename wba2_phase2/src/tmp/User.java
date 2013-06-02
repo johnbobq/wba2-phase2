@@ -2,13 +2,15 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2013.05.12 um 06:31:57 PM CEST 
+// Generiert: 2013.06.02 um 09:22:23 PM CEST 
 //
 
 
 package tmp;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -30,7 +32,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element ref="{}Uname" minOccurs="0"/>
  *         &lt;element ref="{}Ualter" minOccurs="0"/>
  *         &lt;element ref="{}Ugeschlecht" minOccurs="0"/>
- *         &lt;element ref="{}Abonemments" minOccurs="0"/>
+ *         &lt;element ref="{}Abonemments" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element ref="{}Ukanal" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attribute ref="{}Uid use="required""/>
@@ -59,7 +61,7 @@ public class User {
     @XmlElement(name = "Ugeschlecht")
     protected String ugeschlecht;
     @XmlElement(name = "Abonemments")
-    protected Abonemments abonemments;
+    protected List<Abonemments> abonemments;
     @XmlElement(name = "Ukanal")
     protected BigInteger ukanal;
     @XmlAttribute(name = "Uid", required = true)
@@ -138,27 +140,32 @@ public class User {
     }
 
     /**
-     * Ruft den Wert der abonemments-Eigenschaft ab.
+     * Gets the value of the abonemments property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Abonemments }
-     *     
-     */
-    public Abonemments getAbonemments() {
-        return abonemments;
-    }
-
-    /**
-     * Legt den Wert der abonemments-Eigenschaft fest.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the abonemments property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Abonemments }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getAbonemments().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Abonemments }
+     * 
+     * 
      */
-    public void setAbonemments(Abonemments value) {
-        this.abonemments = value;
+    public List<Abonemments> getAbonemments() {
+        if (abonemments == null) {
+            abonemments = new ArrayList<Abonemments>();
+        }
+        return this.abonemments;
     }
 
     /**

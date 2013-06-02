@@ -9,12 +9,17 @@
 package generated;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+
+import tmp.Abonemments;
 
 
 /**
@@ -59,7 +64,7 @@ public class User {
     @XmlElement(name = "Ugeschlecht")
     protected String ugeschlecht;
     @XmlElement(name = "Abonemments")
-    protected Abonemments abonemments;
+    protected List<Abonemments> abonemments;
     @XmlElement(name = "Ukanal")
     protected int ukanal;
     @XmlAttribute(name = "Uid", required = true)
@@ -138,27 +143,32 @@ public class User {
     }
 
     /**
-     * Ruft den Wert der abonemments-Eigenschaft ab.
+     * Gets the value of the abonemments property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Abonemments }
-     *     
-     */
-    public Abonemments getAbonemments() {
-        return abonemments;
-    }
-
-    /**
-     * Legt den Wert der abonemments-Eigenschaft fest.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the abonemments property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Abonemments }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getAbonemments().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Abonemments }
+     * 
+     * 
      */
-    public void setAbonemments(Abonemments value) {
-        this.abonemments = value;
+    public List<Abonemments> getAbonemments() {
+        if (abonemments == null) {
+            abonemments = new ArrayList<Abonemments>();
+        }
+        return this.abonemments;
     }
 
     /**

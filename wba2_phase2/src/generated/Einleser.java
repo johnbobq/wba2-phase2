@@ -151,7 +151,7 @@ public class Einleser {
 		Beitrag beitrag1 = new Beitrag();
 		beitrag1.setBnr(1);
 		beitrag1.setBcontent("Das ist der erste Beitrag, das ist eintoller Urlaub");
-		beitrag1.getBtitel().add("ERSTER");
+//		beitrag1.getBtitel().add("ERSTER");
 		
 		// Beitragskommentar
 		// Erster Kommentar zum ersten Beitrag von UID = 1 (Nigel)
