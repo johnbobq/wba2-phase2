@@ -17,7 +17,7 @@ import javax.xml.bind.Unmarshaller;
 
 import generated.*;
 
-@Path( "/channels/{Kid}/posts/{Pid}" )
+@Path( "/channels/{Kid}/posts/{Pid}/comments" )
 public class CommentService {
 
 	@GET

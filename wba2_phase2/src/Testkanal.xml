@@ -2,7 +2,7 @@
 <Dienst>
     <Kanal Kid="1">
         <Kname>Meinurlaub</Kname>
-        <Kbeschreibung>Ein Kanal der von Nigel geführt wird</Kbeschreibung>
+        <Kbeschreibung>Ein Kanal der von Nigel gefÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼hrt wird</Kbeschreibung>
         <Kkommentare>
             <Kommentar Kuser="1" Knr="1">Der erste Kommentar zum Kanal</Kommentar>
         </Kkommentare>
@@ -11,16 +11,15 @@
             <Beitrag Bnr="1">
                 <Btitel>ERSTER</Btitel>
                 <Bkommentare>
-                    <Kommentar Kuser="1" Knr="1">SCHÖNER BERICHT</Kommentar>
+                    <Kommentar Kuser="1" Knr="1">SCHÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œNER BERICHT</Kommentar>
                 </Bkommentare>
                 <Bcontent>Das ist der erste Beitrag, das ist eintoller Urlaub</Bcontent>
             </Beitrag>
         </Beitraege>
     </Kanal>
-    
     <Kanal Kid="2">
         <Kname>Regenurlaub</Kname>
-        <Kbeschreibung>Urlaubsbericht über Regen</Kbeschreibung>
+        <Kbeschreibung>Urlaubsbericht ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼ber Regen</Kbeschreibung>
         <Kkommentare>
             <Kommentar Kuser="2" Knr="1">Langweiliger Kanal</Kommentar>
         </Kkommentare>
@@ -30,6 +29,11 @@
                 <Btitel>ERSTER</Btitel>
                 <Bkommentare>
                     <Kommentar Kuser="1" Knr="1">Toller Bericht</Kommentar>
+                    <Kommentar Kuser="0" Knr="2"></Kommentar>
+                    <Kommentar Kuser="0" Knr="3"></Kommentar>
+                    <Kommentar Kuser="0" Knr="4"></Kommentar>
+                    <Kommentar Kuser="0" Knr="5"></Kommentar>
+                    <Kommentar Kuser="0" Knr="6"/>
                 </Bkommentare>
                 <Bcontent>Zuviel Regen, habe keinen Regenschirm</Bcontent>
             </Beitrag>
