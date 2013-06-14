@@ -53,8 +53,10 @@ public class User {
 	}
 	
 	public void regist(String username, String password) throws XMPPException {
-		
 		acm.createAccount(username, password);
+	}
+	
+	public void comment(String kommentar) {
 		
 	}
 
