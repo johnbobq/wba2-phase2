@@ -10,8 +10,9 @@ import org.jivesoftware.smackx.pubsub.PubSubManager;
 public class User {
 
 	private PubSubManager mgr;
-	private Connection con;
-	private String username, pass, jid;
+	protected Connection con;
+	private String username, pass;
+	protected String jid;
 	private AccountManager acm;
 	
 	public boolean connect() throws XMPPException {
