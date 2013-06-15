@@ -33,7 +33,7 @@ public class UrlaubServer
 
       Thread.sleep(10000);
       test1.benutzerAusloggen();
-//      test1.b2ausloggen();
+      test1.b2ausloggen();
       
       
       Thread.sleep( 60000 * Integer.parseInt( sec ) );

@@ -9,7 +9,7 @@ import org.jivesoftware.smackx.pubsub.PubSubManager;
 
 public class User {
 
-	private PubSubManager mgr;
+	protected PubSubManager mgr;
 	protected Connection con;
 	protected String username;
 	protected String pass;
@@ -17,7 +17,7 @@ public class User {
 	private String server;
 	private int port;
 	private AccountManager acm;
-	private String wurzel_knoten = "Dienst";
+	protected String wurzel_knoten = "Dienst";
 	
 	public User(String name, String pass) throws XMPPException {
 		this.username = name;
@@ -103,9 +103,6 @@ public class User {
 		return username;
 	}
 	
-	public String getUser2() {
-		return con.getUser();
-	}
 	
 	public String getPass() {
 		return pass;

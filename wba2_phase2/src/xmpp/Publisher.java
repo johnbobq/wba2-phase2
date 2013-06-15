@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.jivesoftware.smack.XMPPException;
 import org.jivesoftware.smackx.pubsub.AccessModel;
+import org.jivesoftware.smackx.pubsub.CollectionNode;
 import org.jivesoftware.smackx.pubsub.ConfigureForm;
 import org.jivesoftware.smackx.pubsub.FormType;
 import org.jivesoftware.smackx.pubsub.Item;
 import org.jivesoftware.smackx.pubsub.LeafNode;
+import org.jivesoftware.smackx.pubsub.Node;
 import org.jivesoftware.smackx.pubsub.PubSubManager;
 import org.jivesoftware.smackx.pubsub.PublishModel;
 import org.jivesoftware.smackx.pubsub.Subscription;
@@ -17,6 +19,18 @@ public class Publisher extends User {
 	public Publisher(String name, String pass) throws XMPPException {
 		super(name, pass);
 	}
+	
+	public void rootNode() throws XMPPException {  
+		ConfigureForm form = new ConfigureForm(FormType.submit);
+	    form.setAccessModel(AccessModel.open);
+	    form.setDeliverPayloads(false);
+	    form.setNotifyRetract(true);
+	    form.setPersistentItems(true);
+	    form.setPublishModel(PublishModel.open);
+	
+		Node collection = (CollectionNode) mgr.createNode(wurzel_knoten, form);
+		
+	}
 
 	public void createNode(String titel) throws XMPPException {
 		PubSubManager mgr = new PubSubManager(con);
@@ -25,10 +39,8 @@ public class Publisher extends User {
 	}
 	
 	public void publishNode(String titel) throws XMPPException {
-		
 		PubSubManager mgr = new PubSubManager(con);
 		LeafNode node = mgr.getNode(titel);
-		
 		node.send(new Item(titel));
 		node.publish();
 	}

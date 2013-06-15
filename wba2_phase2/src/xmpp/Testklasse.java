@@ -1,9 +1,7 @@
-package restservice;
+package xmpp;
 
 import org.jivesoftware.smack.XMPPException;
 
-import xmpp.Publisher;
-import xmpp.User;
 
 public class Testklasse {
 
@@ -18,7 +16,6 @@ public class Testklasse {
 		b1.setServer("localhost");
 	    if(b1.setConnectionFile())
 	    	System.out.println("Verbindung erstellt");
-	    System.out.println("Jid mit b1getuser2(): " + b1.getUser2());
 	    System.out.println("Serveradresse mit getServer(): " + b1.getServer());
 	    System.out.println("Port mit getPort(): " + b1.getPort());
 	    
@@ -29,7 +26,8 @@ public class Testklasse {
 	}
 	
 	public void benutzerConnect() throws XMPPException, InterruptedException {
-	    b1.login();		
+	    b1.login();	
+	    b2.login();
 	}
 	
 	public void benutzRegist() throws XMPPException, InterruptedException {
