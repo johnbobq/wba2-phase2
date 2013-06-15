@@ -1,6 +1,8 @@
 package restservice;
 
 
+import xmpp.*;
+
 import com.sun.grizzly.http.SelectorThread;
 import com.sun.jersey.api.container.grizzly.GrizzlyServerFactory;
 
@@ -23,6 +25,14 @@ public class UrlaubServer
       System.out.println("Comments");
       System.out.println( "URL: " + url + "/channels/{Kid}/posts/{Pid}/comments" );
       System.out.println( "URL: " + url + "/channels/{Kid}/posts/{Pid}/comments/{Cid}\n" );
+      
+      Testklasse test1 = new Testklasse();
+      test1.benutzerErstellen();
+      test1.benutzerAusloggen();
+      test1.benutzerConnect();
+//      test1.benutzRegist();
+      
+      
       Thread.sleep( 60000 * Integer.parseInt( sec ) );
       srv.stopEndpoint();
    }
