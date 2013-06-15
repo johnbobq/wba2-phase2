@@ -15,8 +15,7 @@ import org.jivesoftware.smackx.pubsub.Subscription;
 public class Publisher extends User {
 	
 	public Publisher(String name, String pass) throws XMPPException {
-		this.username = name;
-		this.pass = pass;
+		super(name, pass);
 	}
 
 	public void createNode(String titel) throws XMPPException {

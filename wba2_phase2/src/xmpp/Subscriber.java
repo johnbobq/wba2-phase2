@@ -17,8 +17,7 @@ import org.jivesoftware.smackx.pubsub.listener.ItemEventListener;
 public class Subscriber extends User {
 
 	public Subscriber(String name, String pass) throws XMPPException {
-		this.username = name;
-		this.pass = pass;
+		super(name, pass);
 	}
 	
 	public void subscribe(String titel) throws XMPPException {

@@ -28,9 +28,12 @@ public class UrlaubServer
       
       Testklasse test1 = new Testklasse();
       test1.benutzerErstellen();
-      test1.benutzerAusloggen();
       test1.benutzerConnect();
 //      test1.benutzRegist();
+
+      Thread.sleep(10000);
+      test1.benutzerAusloggen();
+//      test1.b2ausloggen();
       
       
       Thread.sleep( 60000 * Integer.parseInt( sec ) );
