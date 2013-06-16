@@ -30,6 +30,9 @@ public class UrlaubServer
       test1.benutzerErstellen();
       test1.benutzerConnect();
       test1.nodesErstellen();
+      test1.subscribe();
+      test1.publish();
+      test1.publishPayload();
 //      test1.benutzRegist();
 
       Thread.sleep(10000);

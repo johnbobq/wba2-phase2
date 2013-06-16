@@ -11,8 +11,10 @@ import org.jivesoftware.smackx.pubsub.Item;
 import org.jivesoftware.smackx.pubsub.LeafNode;
 import org.jivesoftware.smackx.pubsub.Node;
 import org.jivesoftware.smackx.pubsub.NodeType;
+import org.jivesoftware.smackx.pubsub.PayloadItem;
 import org.jivesoftware.smackx.pubsub.PubSubManager;
 import org.jivesoftware.smackx.pubsub.PublishModel;
+import org.jivesoftware.smackx.pubsub.SimplePayload;
 import org.jivesoftware.smackx.pubsub.Subscription;
 
 public class Publisher extends User {
@@ -52,21 +54,21 @@ public class Publisher extends User {
 	}
 	
 	/* Eine neuen CollectionNode mit Name an den Wurzelknoten hängen, entspricht einem Kanal */
-	public boolean createCollectionNode(String titel) throws XMPPException {
+	public boolean createLeafNode(String titel) throws XMPPException {
 		
 		ConfigureForm form = new ConfigureForm(FormType.submit);
 	    form.setAccessModel(AccessModel.open);
-	    form.setDeliverPayloads(false);
+	    form.setDeliverPayloads(true);
 	    form.setNotifyRetract(true);
 	    form.setPersistentItems(true);
 	    form.setSubscribe(true);
 	    form.setPublishModel(PublishModel.open);
-	    form.setNodeType(NodeType.collection);
+	    form.setNodeType(NodeType.leaf);
 	    form.setCollection(ROOT);
 	    
-	    CollectionNode kanal = null;
+	    LeafNode kanal = null;
 	    try {
-	    	kanal = (CollectionNode) mgr.createNode("Kanal:" + titel, form);
+	    	kanal = (LeafNode) mgr.createNode(titel, form);
 	    	System.out.println("Der CollectionNode(Kanal) wurde erstellt: " + kanal.getId());
 	    	return true;
 	    }
@@ -76,48 +78,39 @@ public class Publisher extends User {
 	    }
 	}
 	
-	
-	public boolean createLeafeNode(String titel, String parent) throws XMPPException {
-		
-		ConfigureForm form = new ConfigureForm(FormType.submit);
-	    form.setAccessModel(AccessModel.open);
-	    form.setDeliverPayloads(true);
-	    form.setNotifyRetract(true);
-	    form.setPersistentItems(true);
-	    form.setPublishModel(PublishModel.open);
-	    form.setNodeType(NodeType.leaf);
-	    form.setCollection("Kanal:" + parent);
-		
-	    // Schaue ob es den CollectionNode(Kanal) gibt
-	    CollectionNode tmp = null;
-	    try {
-	    	tmp = (CollectionNode) mgr.getNode("Kanal:" + parent);
-	    }
-	    catch (XMPPException e) {
-	    	System.out.println("Falscher CollectionNode(Kanal) wurde eingegeben");
-	    	return false;
-	    }
-	    
-	    LeafNode beitrag = null;
-	    try {
-	    	beitrag = (LeafNode) mgr.createNode(tmp.getId() + "/" + titel, form);
-	    	System.out.println("Der LeafNode(Beitrag wurde erstellt: " + beitrag.getId());
-	    	return true;
-	    }
-	    catch (XMPPException e) {
-	    	System.out.println("Dieser LeafNode(Beitrag)-Name ist bereits vorhanden: " + titel);
-	    	return false;
-	    }
-	    
+	public boolean publishNode(String node) throws XMPPException {
+		LeafNode beitrag = null;
+		try {
+			beitrag = mgr.getNode(node);
+		}
+		catch (XMPPException e) {
+			System.out.println("Falscher Node(Kanal) angegeben");
+		}
+		// Fehlt hier etwas?
+		beitrag.publish(new Item());
+		System.out.println("Item wurde auf Node /" + beitrag.getId() + "/ gepublished");
+		return true;
 	}
+	
+	public boolean publishNodePayload(String node, String titelBeitrag) throws XMPPException {
+		String itemId = node + System.currentTimeMillis();
+		LeafNode beitrag = null;
+		try {
+			beitrag = mgr.getNode(node);
+		}
+		catch (XMPPException e) {
+			System.out.println("Falscher Node(Kanal) angegeben");
+			return false;
+		}
+		SimplePayload payload = new SimplePayload(node, beitrag.getId()+":Kommentar" , "Hier XML?!");
+		PayloadItem payloadItem = new PayloadItem(itemId, payload);
+		beitrag.publish(payloadItem);
+		// beitrag.send(payloadItem);
+		System.out.println("Item mit Payload wurde an gepublished" + beitrag.getId());
+		return true;
+	}
+	
 
-	
-	public void publishNode(String titel) throws XMPPException {
-		PubSubManager mgr = new PubSubManager(con);
-		LeafNode node = mgr.getNode(titel);
-		node.send(new Item(titel));
-		node.publish();
-	}
 	
 	public List<Subscription> getSubscriber(String titel) throws XMPPException {
 		
@@ -126,5 +119,42 @@ public class Publisher extends User {
 		
 		return node.getSubscriptions();
 	}
+	
+//	public boolean createLeafeNode(String titel, String parent) throws XMPPException {
+//	
+//	ConfigureForm form = new ConfigureForm(FormType.submit);
+//    form.setAccessModel(AccessModel.open);
+//    form.setDeliverPayloads(true);
+//    form.setNotifyRetract(true);
+//    form.setPersistentItems(true);
+//    form.setPublishModel(PublishModel.open);
+//    form.setNodeType(NodeType.leaf);
+//    form.setCollection("Kanal:" + parent);
+//    form.setSubscribe(false);
+//	
+//    // Schaue ob es den CollectionNode(Kanal) gibt
+//    CollectionNode tmp = null;
+//    try {
+//    	tmp = (CollectionNode) mgr.getNode("Kanal:" + parent);
+//    }
+//    catch (XMPPException e) {
+//    	System.out.println("Falscher CollectionNode(Kanal) wurde eingegeben");
+//    	return false;
+//    }
+//    
+//    LeafNode beitrag = null;
+//    try {
+//    	beitrag = (LeafNode) mgr.createNode(tmp.getId() + "/" + titel, form);
+//    	System.out.println("Der LeafNode(Beitrag wurde erstellt: " + beitrag.getId());
+//    	return true;
+//    }
+//    catch (XMPPException e) {
+//    	System.out.println("Dieser LeafNode(Beitrag)-Name ist bereits vorhanden: " + titel);
+//    	return false;
+//    }
+//    
+//}
+//
+
 
 }

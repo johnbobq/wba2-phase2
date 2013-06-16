@@ -6,7 +6,7 @@ import org.jivesoftware.smack.XMPPException;
 public class Testklasse {
 
 	Publisher b1;
-	User b2;
+	Subscriber b2;
 	
 	public void benutzerErstellen() throws XMPPException {
 		this.b1 = new Publisher("user3", "abcd");
@@ -19,7 +19,7 @@ public class Testklasse {
 	    System.out.println("Serveradresse mit getServer(): " + b1.getServer());
 	    System.out.println("Port mit getPort(): " + b1.getPort());
 	    
-		this.b2 = new Publisher("user4", "abcd");
+		this.b2 = new Subscriber("user4", "abcd");
 		b2.setPort(5222);
 		b2.setServer("localhost");
 		b2.setConnectionFile();
@@ -32,8 +32,19 @@ public class Testklasse {
 	
 	public void nodesErstellen() throws XMPPException, InterruptedException {
 		b1.createRootNode();
-		b1.createCollectionNode("Kanal1");
-		b1.createLeafeNode("beitrag1", "Kanal1");
+		b1.createLeafNode("Kanal1");
+	}
+	
+	public void publish() throws XMPPException {
+		b1.publishNode("Kanal1");
+	}
+	
+	public void publishPayload() throws XMPPException {
+		b1.publishNodePayload("Kanal1", "ErsterBeitrag");
+	}
+	
+	public void subscribe() throws XMPPException {
+		b2.subscribe("Kanal1");
 	}
 	
 	public void benutzRegist() throws XMPPException, InterruptedException {

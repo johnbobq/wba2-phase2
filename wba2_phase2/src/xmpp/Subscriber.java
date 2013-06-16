@@ -20,14 +20,20 @@ public class Subscriber extends User {
 		super(name, pass);
 	}
 	
-	public void subscribe(String titel) throws XMPPException {
-		
-		PubSubManager mgr = new PubSubManager(con);
-		LeafNode node = mgr.getNode(titel);
-		
-//		 node.addItemEventListener(new ItemEventCoordinator<Item>());
-		node.subscribe(jid);
-		
+	public boolean subscribe(String node) throws XMPPException {
+	      // Get the node
+		LeafNode beitrag = null;
+		try {
+			beitrag = mgr.getNode(node);
+		}
+		catch (XMPPException e) {
+			System.out.println("Node konnte nicht abonniert werden, falscher Name?");
+			return false;
+		}     
+		beitrag.addItemEventListener(new ItemEventCoordinator());
+	    beitrag.subscribe(jid);
+	    System.out.println("User mit der Jid `" + jid + "` hat Kanal "+ "`"+node+"`" + " abonniert");
+	    return true;
 	}
 	
 
