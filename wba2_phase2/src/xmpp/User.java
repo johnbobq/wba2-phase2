@@ -3,6 +3,7 @@ package xmpp;
 import org.jivesoftware.smack.AccountManager;
 import org.jivesoftware.smack.Connection;
 import org.jivesoftware.smack.ConnectionConfiguration;
+import org.jivesoftware.smack.SASLAuthentication;
 import org.jivesoftware.smack.XMPPConnection;
 import org.jivesoftware.smack.XMPPException;
 import org.jivesoftware.smackx.pubsub.PubSubManager;
@@ -17,7 +18,7 @@ public class User {
 	private String server;
 	private int port;
 	private AccountManager acm;
-	protected String wurzel_knoten = "Dienst";
+	protected String ROOT = "Dienst";
 	
 	public User(String name, String pass) throws XMPPException {
 		this.username = name;
@@ -34,6 +35,7 @@ public class User {
 		}
 		else {
 			ConnectionConfiguration config = new ConnectionConfiguration(server ,port);
+			SASLAuthentication.supportSASLMechanism("PLAIN", 0);
 			con = new XMPPConnection(config);
 			return true;
 		}
@@ -80,7 +82,7 @@ public class User {
 	}
 	
 	public String getRootNode() {
-		return wurzel_knoten;
+		return ROOT;
 	}
 
 	public void setPort(int port) {

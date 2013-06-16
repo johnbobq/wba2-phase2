@@ -5,7 +5,7 @@ import org.jivesoftware.smack.XMPPException;
 
 public class Testklasse {
 
-	User b1;
+	Publisher b1;
 	User b2;
 	
 	public void benutzerErstellen() throws XMPPException {
@@ -28,6 +28,12 @@ public class Testklasse {
 	public void benutzerConnect() throws XMPPException, InterruptedException {
 	    b1.login();	
 	    b2.login();
+	}
+	
+	public void nodesErstellen() throws XMPPException, InterruptedException {
+		b1.createRootNode();
+		b1.createCollectionNode("Kanal1");
+		b1.createLeafeNode("beitrag1", "Kanal1");
 	}
 	
 	public void benutzRegist() throws XMPPException, InterruptedException {
