@@ -32,7 +32,7 @@ public class PostService {
 		Beitraege postsNew = of.createBeitraege();
 		
 		postsNew = posts.getKanal().get(i).getBeitraege();
-		
+		System.out.println("Alle Posts von Kanal");
 		return postsNew;
 		
 	}
@@ -50,6 +50,7 @@ public class PostService {
 		Beitrag post = of.createBeitrag();
 		// Holt den j-ten Beitrag
 		post = posts.getKanal().get(i).getBeitraege().getBeitrag().get(j);
+		System.out.println("Hole bestimmten Post von Kanal");
 		return post;
 		
 	}
@@ -68,7 +69,7 @@ public class PostService {
 		Marshaller m = context.createMarshaller();
 		m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 		m.marshal(posts, new File("src/Testkanal.xml"));
-				
+		System.out.println("Ein Post wurde gelöscht");
 	}
 	
 	@POST
@@ -91,6 +92,7 @@ public class PostService {
 		Marshaller m = context.createMarshaller();
 		m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 		m.marshal(posts, new File("src/Testkanal.xml"));
+		System.out.println("Posts hinzugefügt");
 	}
 
 }
