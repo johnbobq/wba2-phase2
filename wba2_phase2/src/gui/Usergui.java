@@ -96,7 +96,9 @@ class Usergui {
 					JOptionPane.showMessageDialog(null, "One of the required field is empty!", "Error", JOptionPane.ERROR_MESSAGE);
 				 }
 				else {
-					System.out.println("Alles Ok");
+					System.out.println("Kanal: "+textField.getText());
+					System.out.println("Beitrag: "+beitragTextField.getText());
+
 ;				}
 
 			}
