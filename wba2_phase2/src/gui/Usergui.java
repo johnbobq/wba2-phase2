@@ -91,11 +91,15 @@ class Usergui {
 		JButton btnSpeichern = new JButton("Speichern");
 		btnSpeichern.addActionListener(new ActionListener() {
 
+			//Action wenn Button Speichern gedrŸckt wird
 			public void actionPerformed(ActionEvent e) {
+				//†berprŸfen ob Textfelder leer sind -> muss noch dran geschraubt werden
 				if(beitragTextField.getText().isEmpty() || textField.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(null, "One of the required field is empty!", "Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Eins der fehlenden Felder ist leer!", "Error", JOptionPane.ERROR_MESSAGE);
 				 }
+				
 				else {
+					//Felder ausgeben --> Eigenlichte Funktion hier rein!
 					System.out.println("Kanal: "+textField.getText());
 					System.out.println("Beitrag: "+beitragTextField.getText());
 
