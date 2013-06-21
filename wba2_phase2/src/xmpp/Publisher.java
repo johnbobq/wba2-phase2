@@ -65,6 +65,7 @@ public class Publisher extends User {
 	    form.setNotifyRetract(true);
 	    form.setPersistentItems(true);
 	    form.setSubscribe(true);
+	    form.setDeliverPayloads(true);
 	    form.setPublishModel(PublishModel.open);
 	    form.setNodeType(NodeType.leaf);
 	    form.setCollection(ROOT);
@@ -72,7 +73,7 @@ public class Publisher extends User {
 	    LeafNode kanal = null;
 	    try {
 	    	kanal = (LeafNode) mgr.createNode(titel, form);
-	    	System.out.println("Der CollectionNode(Kanal) wurde erstellt: " + kanal.getId());
+	    	System.out.println("Der LeafNode(Kanal) wurde erstellt: " + kanal.getId());
 	    	return true;
 	    }
 	    catch (XMPPException e) {
@@ -109,21 +110,35 @@ public class Publisher extends User {
 		PayloadItem payloadItem = new PayloadItem(itemId, payload);
 //		beitrag.send(payloadItem);
 		beitrag.publish(payloadItem);
-		System.out.println("Item mit Payload wurde gepublished an  " + beitrag.getId() + beitrag.getSubscriptions().size());
+		System.out.println("Item mit Payload wurde gepublished an  " + beitrag.getId() + " und hat groﬂe: " + beitrag.getSubscriptions().size());
 		return true;
 	}
 	
+	/* Hilfsklasse */
 	public void getPublishedItem(String node) throws XMPPException {
 		
 		LeafNode beitrag = mgr.getNode(node);
 		Collection<? extends Item> items = beitrag.getItems();
 		if(items.isEmpty())
-			System.out.println("asdsadad leer hahsa");
+			System.out.println(node + " getItems ist leer.");
 		
 	}
 	
-
 	
+	/* Hilfsklasse */
+	public void loeschtest() throws XMPPException {
+		try {
+
+			mgr.deleteNode("Kanal1");
+			System.out.println("Loeschen geklappt");
+		}
+		catch (XMPPException e) {
+			System.out.println("loeschen nicht geklappt");
+		}
+	}
+	
+
+	/* Hilfsklasse */
 	public List<Subscription> getSubscriber(String titel) throws XMPPException {
 		
 		PubSubManager mgr = new PubSubManager(con);

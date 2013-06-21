@@ -31,6 +31,10 @@ public class Testklasse {
 		b3.setConnectionFile();
 	}
 	
+	public void loesche() throws XMPPException {
+		b1.loeschtest();
+	}
+	
 	public void benutzerConnect() throws XMPPException, InterruptedException {
 	    b1.login();	
 	    b2.login();
@@ -52,12 +56,15 @@ public class Testklasse {
 	
 	public void subscribe() throws XMPPException {
 		b2.subscribe("Kanal1");
-		b2.subPub();
+		b3.subscribe("Kanal1");
+		b2.subPub("Kanal1");
+		
 	}
 	
 	public void getPublished() throws XMPPException {
 		b1.getPublishedItem("Kanal1");
 		System.out.println(b1.getSubscriber("Kanal1").size());
+		b2.listNodes();
 	}
 	
 	public void benutzRegist() throws XMPPException, InterruptedException {
