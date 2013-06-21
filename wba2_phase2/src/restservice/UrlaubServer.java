@@ -15,7 +15,8 @@ public class UrlaubServer
 
       SelectorThread srv = GrizzlyServerFactory.create( url );
 
-      System.out.println( "URL: " + url+"\n" );
+      System.out.println("Users");
+      System.out.println("URL: " + url + "/users\n");
       System.out.println("Channels");
       System.out.println( "URL: " + url + "/channels" );
       System.out.println( "URL: " + url + "/channels/{Kid}\n" );
@@ -33,6 +34,7 @@ public class UrlaubServer
       test1.subscribe();
       test1.publish();
       test1.publishPayload();
+      test1.getPublished();
 //      test1.benutzRegist();
 
       Thread.sleep(10000);

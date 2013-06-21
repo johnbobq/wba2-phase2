@@ -1,8 +1,11 @@
 package xmpp;
 
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import org.jivesoftware.smack.XMPPException;
+import org.jivesoftware.smackx.packet.DiscoverItems;
 import org.jivesoftware.smackx.pubsub.AccessModel;
 import org.jivesoftware.smackx.pubsub.CollectionNode;
 import org.jivesoftware.smackx.pubsub.ConfigureForm;
@@ -84,7 +87,7 @@ public class Publisher extends User {
 			beitrag = mgr.getNode(node);
 		}
 		catch (XMPPException e) {
-			System.out.println("Falscher Node(Kanal) angegeben");
+			System.out.println("Falscher Node(Kanal) zum Publishen angegeben");
 		}
 		// Fehlt hier etwas?
 		beitrag.publish(new Item());
@@ -92,7 +95,7 @@ public class Publisher extends User {
 		return true;
 	}
 	
-	public boolean publishNodePayload(String node, String titelBeitrag) throws XMPPException {
+	public boolean publishNodePayload(String node, String content) throws XMPPException {
 		String itemId = node + System.currentTimeMillis();
 		LeafNode beitrag = null;
 		try {
@@ -102,12 +105,21 @@ public class Publisher extends User {
 			System.out.println("Falscher Node(Kanal) angegeben");
 			return false;
 		}
-		SimplePayload payload = new SimplePayload(node, beitrag.getId()+":Kommentar" , "Hier XML?!");
+		SimplePayload payload = new SimplePayload("sonquatsch", beitrag.getId()+":Kommentar" , content);
 		PayloadItem payloadItem = new PayloadItem(itemId, payload);
+//		beitrag.send(payloadItem);
 		beitrag.publish(payloadItem);
-		// beitrag.send(payloadItem);
-		System.out.println("Item mit Payload wurde an gepublished" + beitrag.getId());
+		System.out.println("Item mit Payload wurde gepublished an  " + beitrag.getId() + beitrag.getSubscriptions().size());
 		return true;
+	}
+	
+	public void getPublishedItem(String node) throws XMPPException {
+		
+		LeafNode beitrag = mgr.getNode(node);
+		Collection<? extends Item> items = beitrag.getItems();
+		if(items.isEmpty())
+			System.out.println("asdsadad leer hahsa");
+		
 	}
 	
 

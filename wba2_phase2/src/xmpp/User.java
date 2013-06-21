@@ -43,8 +43,8 @@ public class User {
 	
 	/* PubSubManager und Acm erstellen mit Verbindung zum localhost */
 	public void login() throws XMPPException, InterruptedException {
-		mgr = new PubSubManager(con);
-		acm = new AccountManager(con);
+		this.mgr = new PubSubManager(con);
+		this.acm = new AccountManager(con);
 		con.connect();	
 		con.login(username, pass);
 		jid = con.getUser();
