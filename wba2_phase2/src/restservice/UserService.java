@@ -26,7 +26,7 @@ public class UserService {
 		JAXBContext context = JAXBContext.newInstance("generated");
 		Unmarshaller um = context.createUnmarshaller();
 		Dienst users = (Dienst) um.unmarshal(new FileReader("src/Testuser.xml"));
-
+		System.out.println("Alle User");
 		return users;
 	}
 
@@ -42,7 +42,7 @@ public class UserService {
 		ObjectFactory of = new ObjectFactory();
 		Dienst user = of.createDienst();
 		user.getUser().add(users.getUser().get(i));
-		System.out.println("asas");
+		System.out.println("Bestimmter User");
 		return user;
 
 	}
@@ -69,7 +69,7 @@ public class UserService {
 		Marshaller m = context.createMarshaller();
 		m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 		m.marshal(user, new File("src/Testuser.xml"));
-
+		System.out.println("User gelöscht");
 		return user;
 	}
 
@@ -95,7 +95,7 @@ public class UserService {
 		Marshaller m = context.createMarshaller();
 		m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 		m.marshal(users, new File("src/Testuser.xml"));
-		
+		System.out.println("User hinzugefügt");
 		return users;
 
 	}

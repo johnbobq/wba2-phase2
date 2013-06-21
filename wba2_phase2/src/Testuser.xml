@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Dienst>
     <User Uid="1">
-        <Uname>Nigel</Uname>
-        <Ualter>23</Ualter>
-        <Ugeschlecht>m</Ugeschlecht>
-        <Ukanal>1</Ukanal>
-    </User>
-    <User Uid="2">
         <Uname>Test</Uname>
         <Ualter>5</Ualter>
         <Ugeschlecht>w</Ugeschlecht>
+        <Ukanal>1</Ukanal>
+    </User>
+    <User Uid="3">
+        <Ualter>0</Ualter>
+        <Ukanal>0</Ukanal>
+    </User>
+    <User Uid="4">
+        <Ualter>0</Ualter>
+        <Ukanal>0</Ukanal>
+    </User>
+    <User Uid="5">
+        <Ualter>0</Ualter>
         <Ukanal>0</Ukanal>
     </User>
 </Dienst>

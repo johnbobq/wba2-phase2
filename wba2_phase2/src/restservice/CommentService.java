@@ -1,13 +1,16 @@
 package restservice;
 
 import generated.Beitraege;
+import generated.Beitrag;
 import generated.Dienst;
+import generated.Kommentare;
 import generated.ObjectFactory;
 import generated.User;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.List;
 
 import javax.ws.rs.*;
 import javax.xml.bind.JAXBContext;
@@ -27,14 +30,16 @@ public class CommentService {
 		JAXBContext context = JAXBContext.newInstance("generated");
 		Unmarshaller um = context.createUnmarshaller();
 		Dienst comments = (Dienst) um.unmarshal(new FileReader("src/Testkanal.xml"));
-		
 		ObjectFactory of = new ObjectFactory();
 		Kommentare commentsNew = of.createKommentare();
-		
+
 		commentsNew = comments.getKanal().get(i).getBeitraege().getBeitrag().get(j).getBkommentare();
 		
-		return commentsNew;
+		System.out.println("ALLE KOMMENTARE ZUdddd EINEM POST");
+		
+		return comments.getKanal().get(i).getBeitraege().getBeitrag().get(j).getBkommentare();
 	}
+	
 	
 	@GET
 	@Path("/{Cid}")
@@ -49,6 +54,7 @@ public class CommentService {
 		Kommentar comment = of.createKommentar();
 		
 		comment = comments.getKanal().get(i).getBeitraege().getBeitrag().get(j).getBkommentare().getKommentar().get(k);
+		System.out.println("Ein bestimmter Kommentar zu einem Post");
 		return comment;
 		
 	}
@@ -67,12 +73,13 @@ public class CommentService {
 		Marshaller m = context.createMarshaller();
 		m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 		m.marshal(comments, new File("src/Testkanal.xml"));
+		System.out.println("Bestimmter Kommentar, zu Post, gelöscht");
 		
 	}
 	@POST
 	@Path("/{Cid}")
 	@Produces("application/xml")
-	public void deleteComment(@PathParam("Kid") int i, @PathParam("Pid") int j, @FormParam("Verfasser") int user, @FormParam("Komm") String inhalt) throws JAXBException, FileNotFoundException {
+	public void postComment(@PathParam("Kid") int i, @PathParam("Pid") int j, @FormParam("Verfasser") int user, @FormParam("Komm") String inhalt) throws JAXBException, FileNotFoundException {
 		
 		JAXBContext context = JAXBContext.newInstance("generated");
 		Unmarshaller um = context.createUnmarshaller();
@@ -88,6 +95,7 @@ public class CommentService {
 		Marshaller m = context.createMarshaller();
 		m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 		m.marshal(comments, new File("src/Testkanal.xml"));
+		System.out.println("Neuer Kommentar zu Post");
 	}
 	
 }
