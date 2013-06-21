@@ -10,6 +10,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
@@ -91,12 +92,11 @@ class Usergui {
 		btnSpeichern.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				if(beitragTextField.getText().isEmpty()) {
-					 System.out.println("Text Feld ist leer");
+				if(beitragTextField.getText().isEmpty() || textField.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "One of the required field is empty!", "Error", JOptionPane.ERROR_MESSAGE);
 				 }
-				
-				if(textField.getText().isEmpty()) {
-					System.out.println("Kein Urlaubs Kanal genommen");
+				else {
+					System.out.println("Alles Ok");
 ;				}
 
 			}
