@@ -99,7 +99,7 @@ class Usergui {
 				 }
 				
 				else {
-					//Felder ausgeben --> Eigenlichte Funktion hier rein!!!
+					//Felder ausgeben --> Eigenlichte Funktion hier rein!
 					System.out.println("Kanal: "+textField.getText());
 					System.out.println("Beitrag: "+beitragTextField.getText());
 
