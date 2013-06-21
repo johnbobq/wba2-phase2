@@ -15,8 +15,16 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JPanel;
+
+import javax.swing.Popup;
+import javax.swing.PopupFactory;
 
 import org.eclipse.wb.swing.FocusTraversalOnArray;
+import javax.swing.JTable;
+import javax.swing.JTextPane;
 
 class Usergui {
 
@@ -29,7 +37,12 @@ class Usergui {
 
 	/**
 	 * Launch the application.
+	 * @return 
 	 */
+	
+
+
+	
 	public static void main(String[] args) {
 		try {
 			Usergui window = new Usergui();
@@ -38,6 +51,7 @@ class Usergui {
 			e.printStackTrace();
 		}
 	}
+	
 
 	/**
 	 * Create the application.
@@ -56,8 +70,8 @@ class Usergui {
 		frame.getContentPane().setLayout(null);
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBackground(new Color(238, 238, 238));
 		tabbedPane.setBounds(6, 25, 620, 435);
+		tabbedPane.setBackground(new Color(238, 238, 238));
 		frame.getContentPane().add(tabbedPane);
 
 		JPanel panel_1 = new JPanel();
@@ -132,6 +146,19 @@ class Usergui {
 		JButton btnAnzeigen = new JButton("Anzeigen");
 		btnAnzeigen.setBounds(241, 29, 117, 29);
 		panel.add(btnAnzeigen);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setToolTipText("User");
+		tabbedPane.addTab("User", null, panel_2, null);
+		panel_2.setLayout(null);
+		
+		JTextPane txtpnUser = new JTextPane();
+		txtpnUser.setText("User");
+		txtpnUser.setBounds(95, 6, 416, 170);
+		panel_2.add(txtpnUser);
+		
+		JPanel panel_3 = new JPanel();
+		tabbedPane.addTab("Kanal", null, panel_3, null);
 
 		JLabel lblUrlaub_1 = new JLabel("Urlaub");
 		lblUrlaub_1.setBounds(6, 6, 61, 16);
