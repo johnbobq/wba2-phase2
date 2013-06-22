@@ -32,19 +32,22 @@ import javax.swing.JTextPane;
 
 class Usergui {
 
-	private JFrame framemain, frameLog, frameCon;
-	private JButton btnSpeichern,  btnOk, btnServer;
+	private JFrame framemainpub, framemainsub, frameLog, frameCon;
+	private JButton btnSpeichern,  btnOk, btnServer, btnLogout;
 	private JTextField textField, beitragTextField, userTextField, serverTxtField, portTxtField;
-	private JPanel panelLog, panelCon;
+	private JPanel panelLog, panelCon, panelSub, panel_1;
 	private JLabel benutzernametxt, passworttxt, servertxt, porttxt;
 	private Popup popup;
 	private JPasswordField passwordField;
-	private String rolle, server;
+	private static String rolle;
+	private String server;
 	private int port;
 	private static int connectionVisible, loginVisible;
 	private JComboBox listeRolle;
 	private Publisher pub1;
 	private Subscriber sub1;
+	private User user1;
+	private JTabbedPane tabbedPanelPub; 
 	
 
 	// private final Action action = new SwingAction();
@@ -55,7 +58,8 @@ class Usergui {
 	public Usergui() {
 		connection();
 		login();
-		mainframe();
+		mainframePub();
+		mainframeSub();
 	}
 	
 	/**
@@ -68,11 +72,19 @@ class Usergui {
 		
 		try {
 			window.frameCon.setVisible(true);
+			window.frameLog.setVisible(false);
+			window.framemainpub.setVisible(false);
+			window.framemainsub.setVisible(false);
+			window.framemainsub.setVisible(false);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		/** WHILE SCHLEIFEN SIND PERFROMANCELASTIG SCHEISSE?! */
+		/** WHILE SCHLEIFEN SIND PERFROMANCELASTIG SCHEISSE?! 
+		 * DAS GEHT SO NICHT !!!!!!!!!!!!!!!!!!!!!!!!!!
+		 * 
+		 * Frameverwaltung
+		 * */
 		/* Schaue ob Server und Port korrekt eingegeben wurden */
 		while(connectionVisible == 1) {
 			if(connectionVisible == 0) {
@@ -83,33 +95,42 @@ class Usergui {
 		}
 		while(loginVisible == 1) {
 			if(loginVisible == 0) {
+				System.out.println("lol hier");
+				loginVisible = 0;
+			}
+			if(rolle=="Subscriber") {
 				window.frameLog.setVisible(false);
-				window.framemain.setVisible(true);
+				window.framemainpub.setVisible(true);
+				loginVisible = 0;
+			}
+			if(rolle=="Publisher") {
+				window.frameLog.setVisible(false);
+				window.framemainsub.setVisible(true);
+				loginVisible = 0;
 			}
 		}
 	}
 
 	/**
 	 * Initialize the contents of the frame.
-	 */
-	private void mainframe() {
-		framemain = new JFrame();
-		framemain.setBounds(100, 100, 630, 520);
-		framemain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		framemain.getContentPane().setLayout(null);
+	 */	
+	private void mainframePub() {
+		framemainpub = new JFrame();
+		framemainpub.setBounds(100, 100, 630, 520);
+		framemainpub.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		framemainpub.getContentPane().setLayout(null);
 
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(6, 25, 620, 435);
-		tabbedPane.setBackground(new Color(238, 238, 238));
-		framemain.getContentPane().add(tabbedPane);
+		tabbedPanelPub = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPanelPub.setBounds(6, 25, 620, 435);
+		tabbedPanelPub.setBackground(new Color(238, 238, 238));
+		framemainpub.getContentPane().add(tabbedPanelPub);
 
-		JPanel panel_1 = new JPanel();
-		tabbedPane.addTab("Neuer Beitrag", null, panel_1, null);
+		panel_1 = new JPanel();
+		tabbedPanelPub.addTab("Neuer Beitrag", null, panel_1, null);
 		panel_1.setBackground(UIManager.getColor("Button.background"));
 		panel_1.setLayout(null);
 
-		JLabel lblNewLabel = new JLabel(
-				"Schreibe einen neuen Beitrag \u00FCber deinen urlaub!");
+		JLabel lblNewLabel = new JLabel("Schreibe einen neuen Beitrag \u00FCber deinen urlaub!");
 		lblNewLabel.setBounds(6, 6, 355, 16);
 		panel_1.add(lblNewLabel);
 
@@ -117,6 +138,7 @@ class Usergui {
 		lblUrlaub.setBounds(6, 34, 61, 16);
 		panel_1.add(lblUrlaub);
 
+		/* Dropdown Menu */
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(50, 30, 155, 27);
 		panel_1.add(comboBox);
@@ -164,7 +186,7 @@ class Usergui {
 
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(238, 238, 238));
-		tabbedPane.addTab("Urlaubs Kan\u00E4le", null, panel, null);
+		tabbedPanelPub.addTab("Urlaubs Kan\u00E4le", null, panel, null);
 		panel.setLayout(null);
 
 		JLabel lblNewLabel_1 = new JLabel(
@@ -182,7 +204,7 @@ class Usergui {
 
 		JPanel panel_2 = new JPanel();
 		panel_2.setToolTipText("User");
-		tabbedPane.addTab("User", null, panel_2, null);
+		tabbedPanelPub.addTab("User", null, panel_2, null);
 		panel_2.setLayout(null);
 
 		JTextPane txtpnUser = new JTextPane();
@@ -191,12 +213,24 @@ class Usergui {
 		panel_2.add(txtpnUser);
 
 		JPanel panel_3 = new JPanel();
-		tabbedPane.addTab("Kanal", null, panel_3, null);
+		tabbedPanelPub.addTab("Kanal", null, panel_3, null);
 
 		JLabel lblUrlaub_1 = new JLabel("Urlaub");
 		lblUrlaub_1.setBounds(6, 6, 61, 16);
-		framemain.getContentPane().add(lblUrlaub_1);
-
+		framemainpub.getContentPane().add(lblUrlaub_1);
+		
+		btnLogout = new JButton("Ausloggen");
+		btnLogout.setBounds(400, 350, 120, 40);
+		btnLogout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(btnLogout()) {
+					System.out.println("Benutzer" + user1.getUser() + "hat sich ausgeloggt");
+				}
+			}	
+		});
+		tabbedPanelPub.add(btnLogout);
+		
+		
 		// btn_publish.addActionListener(new ActionListener() {
 		// @Override
 		// public void actionPerformed(ActionEvent e) {
@@ -229,16 +263,33 @@ class Usergui {
 
 	}
 
-	private class SwingAction extends AbstractAction {
-		public SwingAction() {
-			putValue(NAME, "SwingAction");
-			putValue(SHORT_DESCRIPTION, "Some short description");
-		}
-
-		public void actionPerformed(ActionEvent e) {
-		}
+	private void mainframeSub() {
+		framemainsub = new JFrame();
+		framemainsub.setBounds(0, 0, 630, 520);
+		framemainsub.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		framemainsub.getContentPane().setLayout(null);
+		framemainsub.setLocationRelativeTo(null);
+		
+		panelSub = new JPanel();
+		panelSub.setBounds(0, 0, 630, 520);
+		framemainsub.getContentPane().add(panelSub);
+		panelSub.setLayout(null);
+		
+		btnLogout = new JButton("Ausloggen");
+		btnLogout.setBounds(400, 350, 120, 40);
+		btnLogout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(btnLogout()) {
+					System.out.println("Benutzer" + user1.getUser() + "hat sich ausgeloggt");
+				}
+			}	
+		});
+		panelSub.add(btnLogout);
+		
 	}
-
+	
+	
+	
 	public void connection() {
 
 		connectionVisible = 1;
@@ -301,32 +352,32 @@ class Usergui {
 
 		/* Benutzername */
 		userTextField = new JTextField();
-		userTextField.setBounds(100, 5, 130, 30);
+		userTextField.setBounds(130, 5, 130, 30);
 		panelLog.add(userTextField);
 		userTextField.setColumns(10);
 		// Benutzername Txt
-		benutzernametxt = new JLabel("Benutzername");
-		benutzernametxt.setBounds(10, 10, 130, 15);
+		benutzernametxt = new JLabel("Benutzername (user3)");
+		benutzernametxt.setBounds(0, 10, 130, 15);
 		panelLog.add(benutzernametxt);
 
 		/* Passwortfeld */
 		passwordField = new JPasswordField();
-		passwordField.setBounds(100, 50 , 130, 30);
+		passwordField.setBounds(130, 50 , 130, 30);
 		panelLog.add(passwordField);
 		// Passwort Txt Feld
-		passworttxt = new JLabel("Passwort");
-		passworttxt.setBounds(40, 55, 130, 15);
+		passworttxt = new JLabel("Passwort (abcd)");
+		passworttxt.setBounds(30, 55, 130, 15);
 		panelLog.add(passworttxt);
 		
 		/* Der Bestätigungsknopf */
 		btnOk = new JButton("Einloggen");
-		btnOk.setBounds(100, 100, 117, 29);
+		btnOk.setBounds(130, 100, 117, 29);
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					if(btnOk()) {
 						loginVisible = 0;
-						System.out.println("Benutzer eingeloggt");
+						System.out.println("Als "+rolle+"eingeloggt");
 					}
 				} catch (XMPPException e) {
 					e.printStackTrace();
@@ -367,6 +418,18 @@ class Usergui {
 		}
 	}
 	
+	private boolean btnLogout() {
+		if(user1.logout()) {
+			frameCon.setVisible(true);
+			frameLog.setVisible(false);
+			framemainpub.setVisible(false);
+			framemainsub.setVisible(false);
+			framemainsub.setVisible(false);
+			return true;
+		}
+		return false;		
+	}
+	
 	/* Der EventListener für den Einlogge Button */
 	@SuppressWarnings("deprecation")
 	private boolean btnOk() throws XMPPException, InterruptedException {
@@ -381,24 +444,52 @@ class Usergui {
 			System.out.println("Benutzername ausfüllen");
 			return false;
 		}
-		try {
-			pub1 = new Publisher(name, pw);
-			pub1.setPort(port);
-			pub1.setServer(server);
-			System.out.println(port+server);
-			if(pub1.login()) {
-				return true;
-			}
-			else {
+		if(rolle == "Publisher") {
+			try {
+				pub1 = new Publisher(name, pw);
+				pub1.setPort(port);
+				pub1.setServer(server);
+				System.out.println(port + server);
+				if (pub1.login()) {
+					user1=pub1;
+					return true;
+				} else {
+					return false;
+				}
+			} catch (XMPPException e) {
+				System.out.println("Falscher Benutzername");
 				return false;
 			}
 		}
-		catch (XMPPException e) {
-			System.out.println("Falscher Benutzername");
-			return false;
+		else {
+			try {
+				sub1 = new Subscriber(name, pw);
+				sub1.setPort(port);
+				sub1.setServer(server);
+				System.out.println(port + server);
+				if (sub1.login()) {
+					user1=sub1;
+					return true;
+				} else {
+					return false;
+				}
+			} catch (XMPPException e) {
+				System.out.println("Falscher Benutzername");
+				return false;
+			} 
 		}
 		
 		
+	}
+	
+	private class SwingAction extends AbstractAction {
+		public SwingAction() {
+			putValue(NAME, "SwingAction");
+			putValue(SHORT_DESCRIPTION, "Some short description");
+		}
+
+		public void actionPerformed(ActionEvent e) {
+		}
 	}
 
 }
