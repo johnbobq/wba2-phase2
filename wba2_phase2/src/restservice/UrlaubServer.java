@@ -27,21 +27,21 @@ public class UrlaubServer
       System.out.println( "URL: " + url + "/channels/{Kid}/posts/{Pid}/comments" );
       System.out.println( "URL: " + url + "/channels/{Kid}/posts/{Pid}/comments/{Cid}\n" );
       
-      Testklasse test1 = new Testklasse();
-      test1.benutzerErstellen();
-      test1.benutzerConnect();
-//      test1.loesche();
-      test1.nodesErstellen();
-      test1.subscribe();
-      test1.publish();
-      test1.publishPayload();
-      test1.getPublished();
-      
+//      Testklasse test1 = new Testklasse();
+//      test1.benutzerErstellen();
+//      test1.benutzerConnect();
+////      test1.loesche();
+//      test1.nodesErstellen();
+//      test1.subscribe();
+//      test1.publish();
+//      test1.publishPayload();
+//      test1.getPublished();
+//      
 //      test1.benutzRegist();
-
-      Thread.sleep(10000);
-      test1.benutzerAusloggen();
-      test1.b2ausloggen();
+//
+//      Thread.sleep(10000);
+//      test1.benutzerAusloggen();
+//      test1.b2ausloggen();
       
       
       Thread.sleep( 60000 * Integer.parseInt( sec ) );

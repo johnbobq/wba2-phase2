@@ -42,12 +42,25 @@ public class User {
 	}
 	
 	/* PubSubManager und Acm erstellen mit Verbindung zum localhost */
-	public void login() throws XMPPException, InterruptedException {
+	public boolean login() throws XMPPException, InterruptedException {
+		try {
+			setConnectionFile();
+		}
+		catch (Exception e){
+			return false;
+		}
 		this.mgr = new PubSubManager(con);
 		this.acm = new AccountManager(con);
-		con.connect();	
-		con.login(username, pass);
-		jid = con.getUser();
+		try {
+			con.connect();
+			con.login(username, pass);
+			jid = con.getUser();
+			return true;
+		}
+		catch (XMPPException e) {
+			System.out.println("Benutzer: " + username + "konnte nicht eingeloggt werden");
+			return false;
+		}
 	}
 	
 	public boolean logout() {
