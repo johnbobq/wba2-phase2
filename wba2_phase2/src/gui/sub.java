@@ -14,6 +14,7 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JButton;
 import javax.swing.JTextPane;
 import java.awt.Color;
+import javax.swing.JTextArea;
 
 public class sub {
 
@@ -87,6 +88,30 @@ public class sub {
 		JButton btnAlleUserAnzeigen = new JButton("Alle User Anzeigen");
 		btnAlleUserAnzeigen.setBounds(27, 202, 246, 29);
 		panel_2.add(btnAlleUserAnzeigen);
+		
+		JPanel panel = new JPanel();
+		tabbedPane.addTab("Beitrag", null, panel, null);
+		panel.setLayout(null);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(456, 46, -432, 198);
+		panel.add(textArea);
+		
+		JFormattedTextField formattedTextField = new JFormattedTextField();
+		formattedTextField.setBounds(6, 275, 451, 61);
+		panel.add(formattedTextField);
+		
+		JButton btnKommentieren = new JButton("Kommentieren");
+		btnKommentieren.setBounds(6, 348, 117, 29);
+		panel.add(btnKommentieren);
+		
+		JLabel lblBeitragTitel = new JLabel("Beitrag Titel");
+		lblBeitragTitel.setBounds(6, 6, 98, 16);
+		panel.add(lblBeitragTitel);
+		
+		JLabel lblKommentar = new JLabel("Kommentar");
+		lblKommentar.setBounds(6, 254, 154, 16);
+		panel.add(lblKommentar);
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBounds(0, 0, 0, 0);
