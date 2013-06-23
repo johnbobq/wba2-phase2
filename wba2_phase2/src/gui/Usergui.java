@@ -48,6 +48,7 @@ class Usergui {
 	private Subscriber sub1;
 	private User user1;
 	private JTabbedPane tabbedPanelPub; 
+	private JTextField textField_1;
 	
 
 	// private final Action action = new SwingAction();
@@ -145,7 +146,7 @@ class Usergui {
 
 		textField = new JTextField();
 		textField.setToolTipText("");
-		textField.setBounds(211, 28, 134, 28);
+		textField.setBounds(303, 28, 290, 28);
 		panel_1.add(textField);
 		textField.setColumns(10);
 
@@ -180,27 +181,43 @@ class Usergui {
 
 		btnSpeichern.setBounds(6, 295, 117, 29);
 		panel_1.add(btnSpeichern);
+		
+		JLabel lblBeitragsTitel = new JLabel("Beitrags Titel");
+		lblBeitragsTitel.setBounds(214, 34, 110, 16);
+		panel_1.add(lblBeitragsTitel);
 		panel_1.setFocusTraversalPolicy(new FocusTraversalOnArray(
 				new Component[] { lblNewLabel, lblUrlaub, comboBox, textField,
 						beitragTextField, btnSpeichern }));
 
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(238, 238, 238));
-		tabbedPanelPub.addTab("Urlaubs Kan\u00E4le", null, panel, null);
+		tabbedPanelPub.addTab("Kanal erstellen", null, panel, null);
 		panel.setLayout(null);
-
-		JLabel lblNewLabel_1 = new JLabel(
-				"\u00DCbersicht aller Urlaubs Kan\u00E4le");
-		lblNewLabel_1.setBounds(6, 6, 248, 16);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(102, 39, 134, 28);
+		panel.add(textField_1);
+		textField_1.setColumns(10);
+		
+		JLabel lblNewLabel_1 = new JLabel("Kanal Titel");
+		lblNewLabel_1.setBounds(6, 45, 75, 16);
 		panel.add(lblNewLabel_1);
-
-		JLabel lblKanal = new JLabel("Kanal 1");
-		lblKanal.setBounds(6, 34, 223, 16);
-		panel.add(lblKanal);
-
-		JButton btnAnzeigen = new JButton("Anzeigen");
-		btnAnzeigen.setBounds(241, 29, 117, 29);
-		panel.add(btnAnzeigen);
+		
+		JFormattedTextField formattedTextField = new JFormattedTextField();
+		formattedTextField.setBounds(102, 71, 206, 98);
+		panel.add(formattedTextField);
+		
+		JLabel lblBeschreibung = new JLabel("Beschreibung");
+		lblBeschreibung.setBounds(6, 73, 84, 16);
+		panel.add(lblBeschreibung);
+		
+		JButton btnBesttigen = new JButton("Best\u00E4tigen");
+		btnBesttigen.setBounds(102, 191, 117, 29);
+		panel.add(btnBesttigen);
+		
+		JLabel lblSucces = new JLabel("Succes");
+		lblSucces.setBounds(102, 299, 61, 16);
+		panel.add(lblSucces);
 
 		JPanel panel_2 = new JPanel();
 		panel_2.setToolTipText("User");
@@ -463,5 +480,4 @@ class Usergui {
 		public void actionPerformed(ActionEvent e) {
 		}
 	}
-
 }
