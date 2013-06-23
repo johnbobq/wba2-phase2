@@ -231,35 +231,7 @@ class Usergui {
 		tabbedPanelPub.add(btnLogout);
 		
 		
-		// btn_publish.addActionListener(new ActionListener() {
-		// @Override
-		// public void actionPerformed(ActionEvent e) {
-		// boolean errorFound = false;
-		//
-		// if(ta_publishMessage.getText().isEmpty()) {
-		// errorFound = true;
-		// throwError(window, "Fehler: Bitte Nachricht eingeben!");
-		// }
-		//
-		// if(errorFound == false) {
-		// String cb_allTopicsSelected =
-		// stripFormat(cb_allTopics.getSelectedItem().toString());
-		// String ta_publishMessageText = ta_publishMessage.getText();
-		// String tf_nodeTitleText = tf_nodeTitle.getText();
-		//
-		// smack.publishMsg(cb_allTopicsSelected, tf_nodeTitleText,
-		// ta_publishMessageText);
-		// //throwMessage(window,"Success!\n" + cb_allTopicsSelected + "\n" +
-		// ta_publishMessageText);
-		// }
-		// }
-		//
-		// public void actionPerformed(ActionEvent arg0) {
-		// // TODO Auto-generated method stub
-		//
-		// }
-		// });
-		// window.add(btn_publish);
+		
 
 	}
 
@@ -352,21 +324,21 @@ class Usergui {
 
 		/* Benutzername */
 		userTextField = new JTextField();
-		userTextField.setBounds(130, 5, 130, 30);
+		userTextField.setBounds(130, 5, 150, 30);
 		panelLog.add(userTextField);
 		userTextField.setColumns(10);
 		// Benutzername Txt
 		benutzernametxt = new JLabel("Benutzername (user3)");
-		benutzernametxt.setBounds(0, 10, 130, 15);
+		benutzernametxt.setBounds(0, 10, 150, 15);
 		panelLog.add(benutzernametxt);
 
 		/* Passwortfeld */
 		passwordField = new JPasswordField();
-		passwordField.setBounds(130, 50 , 130, 30);
+		passwordField.setBounds(130, 50 , 135, 30);
 		panelLog.add(passwordField);
 		// Passwort Txt Feld
 		passworttxt = new JLabel("Passwort (abcd)");
-		passworttxt.setBounds(30, 55, 130, 15);
+		passworttxt.setBounds(30, 55, 150, 15);
 		panelLog.add(passworttxt);
 		
 		/* Der Bestätigungsknopf */
