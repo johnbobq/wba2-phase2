@@ -1,4 +1,4 @@
-package xmpp;
+package xmpp.altesKonzept;
 
 import org.jivesoftware.smack.AccountManager;
 import org.jivesoftware.smack.Connection;

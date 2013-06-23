@@ -1,4 +1,4 @@
-package xmpp;
+package xmpp.altesKonzept;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -19,6 +19,8 @@ import org.jivesoftware.smackx.pubsub.PubSubManager;
 import org.jivesoftware.smackx.pubsub.PublishModel;
 import org.jivesoftware.smackx.pubsub.SimplePayload;
 import org.jivesoftware.smackx.pubsub.Subscription;
+
+import xmpp.ItemEventCoordinator;
 
 public class Publisher extends User {
 	
@@ -106,11 +108,13 @@ public class Publisher extends User {
 			System.out.println("Falscher Node(Kanal) angegeben");
 			return false;
 		}
+		beitrag.addItemEventListener(new ItemEventCoordinator());
+	    beitrag.subscribe(jid);
 		SimplePayload payload = new SimplePayload("sonquatsch", beitrag.getId()+":Kommentar" , content);
 		PayloadItem payloadItem = new PayloadItem(itemId, payload);
 //		beitrag.send(payloadItem);
 		beitrag.publish(payloadItem);
-		System.out.println("Item mit Payload wurde gepublished an  " + beitrag.getId() + " und hat groﬂe: " + beitrag.getSubscriptions().size());
+		System.out.println("Item mit Payload wurde gepublished an  " + beitrag.getId() + " und hat 1 Subscriber " + beitrag.getSubscriptions().size());
 		return true;
 	}
 	

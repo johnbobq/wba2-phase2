@@ -26,6 +26,9 @@ import org.eclipse.wb.swing.FocusTraversalOnArray;
 import org.jivesoftware.smack.XMPPException;
 
 import xmpp.*;
+import xmpp.altesKonzept.Publisher;
+import xmpp.altesKonzept.Subscriber;
+import xmpp.altesKonzept.User;
 
 import javax.swing.JTable;
 import javax.swing.JTextPane;

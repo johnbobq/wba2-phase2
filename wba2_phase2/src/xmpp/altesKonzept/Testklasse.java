@@ -1,6 +1,7 @@
-package xmpp;
+package xmpp.altesKonzept;
 
 import org.jivesoftware.smack.XMPPException;
+
 
 
 public class Testklasse {

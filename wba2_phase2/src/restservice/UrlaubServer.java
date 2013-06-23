@@ -27,6 +27,7 @@ public class UrlaubServer
       System.out.println( "URL: " + url + "/channels/{Kid}/posts/{Pid}/comments" );
       System.out.println( "URL: " + url + "/channels/{Kid}/posts/{Pid}/comments/{Cid}\n" );
       
+      /** Erstellen der Test Klasse, um XMPP (Publisher und Subscriber) zu testen */
 //      Testklasse test1 = new Testklasse();
 //      test1.benutzerErstellen();
 //      test1.benutzerConnect();
@@ -35,14 +36,16 @@ public class UrlaubServer
 //      test1.subscribe();
 //      test1.publish();
 //      test1.publishPayload();
-//      test1.getPublished();
+////      test1.getPublished();
 //      
-//      test1.benutzRegist();
-//
+////      test1.benutzRegist();
 //      Thread.sleep(10000);
 //      test1.benutzerAusloggen();
 //      test1.b2ausloggen();
       
+      /** Zweite Testklasse, diese testet den neuen XMPP CLient */
+      Xmpptest test2 = new Xmpptest();
+      test2.startTest();
       
       Thread.sleep( 60000 * Integer.parseInt( sec ) );
       srv.stopEndpoint();

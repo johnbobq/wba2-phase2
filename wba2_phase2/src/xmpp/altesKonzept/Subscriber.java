@@ -1,4 +1,4 @@
-package xmpp;
+package xmpp.altesKonzept;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -20,6 +20,8 @@ import org.jivesoftware.smackx.pubsub.PublishModel;
 import org.jivesoftware.smackx.pubsub.SimplePayload;
 import org.jivesoftware.smackx.pubsub.Subscription;
 import org.jivesoftware.smackx.pubsub.listener.ItemEventListener;
+
+import xmpp.ItemEventCoordinator;
 
 
 public class Subscriber extends User {
